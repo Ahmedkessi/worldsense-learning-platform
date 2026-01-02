@@ -1,0 +1,133 @@
+.full-spinner, .full-error {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 200px;
+}
+
+.full-error, .small-error {
+    border: 1px solid rgb(165, 0, 0);
+    border-radius: 4px;
+    background-color: #282833;
+}
+
+.small-spinner, .full-spinner {
+    border: 1px solid rgb(0, 80, 184);
+    border-radius: 4px;
+    background-color: #282833;
+}
+
+.small-spinner, .small-error {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: .9rem;
+    padding: 10px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 10px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.288);
+    margin-bottom: 20px;
+}
+
+.nav img {
+    width: 100px;
+    scale: 4;
+    margin-top: 10px;
+    margin-left: 54px;
+    border-radius: 10rem;
+    cursor: pointer;
+    object-fit: cover;
+    z-index: -9;
+    position: relative;
+}
+
+
+@media screen and (max-width: 500px) {
+    .nav img {
+        width: 80px;
+        margin-left: 44px;
+    }
+}
+
+.nav .bar {
+    font-size: 2rem;
+    cursor: pointer;
+    transform: translateY(-1rem);
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(37, 38, 54, 0.438);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: .4rem 1.7rem;
+    list-style: none;
+    border-radius: .2rem;
+    border: 1px solid rgba(187, 185, 185, 0.397);
+    width: 90%;
+    margin-bottom: 30px;
+    animation: .2s NavOpen linear;
+}
+
+@keyframes NavOpen {
+    from {
+        opacity: .4;
+        margin-top: -20px;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.nav-tabs li {
+    cursor: pointer;
+    font-size: .9rem;
+}
+
+@media screen and (max-width: 600px) {
+    .nav-tabs li {
+        font-size: .8rem;
+    }
+}
+
+
+
+
+.button {
+    border: none;
+    border: 1px solid #646cff;
+    font-weight: 400;
+    border-radius: 4px;
+    padding-bottom: 7px;
+}
+
+.button:focus {
+    outline: none;
+}
+
+
+
+
+
