@@ -25,7 +25,8 @@ function CountryImages() {
 
                 const data = await res.json();
                 if(!data) throw new Error(`${country?.name?.common} images was not found!`)
-                setImages(()=> data.results.map(img => img.urls.full).slice(0,14));
+                setImages(()=> data.results.map(img => img.urls.regular).slice(0,14));
+            console.log(data.results);
                 setIsloading(false)
             }
 
