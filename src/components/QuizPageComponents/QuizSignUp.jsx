@@ -136,6 +136,8 @@ function signup(username, password, avatar) {
           <p className="nb">
             NOTE: YOU CANNOT CHANGE YOUR NAME ONCE YOU CREATED <br />
             <span>make sure to choose good name</span>
+            <br />
+            <span>Click the image box to add avatar</span>
           </p>
 
           <form onSubmit={(e) => handlerSubmit(e)}>

@@ -493,11 +493,6 @@
     overflow: hidden;
 }
 
-@media screen and (max-width: 465px) {
-    .game-cards {
-        grid-template-columns: 1fr 1fr;
-    }
-}
 
 
 .game-card {
@@ -597,6 +592,19 @@
     padding: 0px 20px;
     border-radius: 4px;
     border: 2px solid rgb(0, 0, 0);
+}
+
+
+
+
+@media screen and (max-width: 465px) {
+    .game-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .games-box > div .lock {
+        height: 93%;
+    }
 }
 
 

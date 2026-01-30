@@ -54,7 +54,8 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    height: 90vh;
+    height: 90dvh;
+    overflow: scroll;
 }
 
 
@@ -115,6 +116,8 @@
     font-weight: 700;
     background-color: rgba(0, 0, 0, 0.075);
     backdrop-filter: blur(20px);
+    font-size: 2rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .login--contaiener .intro {
@@ -177,9 +180,10 @@
 }
 
 .login--contaiener .footer {
-    font-size: .9rem;
     margin-top: 10px;
     margin-bottom: 4px;
+    font-weight: 200;
+    font-size: .88rem;
 }
 
 
@@ -691,6 +695,15 @@
         flex-direction: column;
         justify-content: start;
         align-items: start;
+    }
+
+    .login--contaiener .title {
+        max-width: 200px;
+        margin-top: 24px;
+    }
+
+    .login--contaiener .intro {
+        font-size: 1rem;
     }
 
     .login--contaiener .box-1 {

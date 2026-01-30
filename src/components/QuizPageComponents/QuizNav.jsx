@@ -16,7 +16,7 @@ function QuizNav() {
                 <img src={avatar} alt="user_logo" />
             </div>
             <div className="info">
-                <p>{username}</p>
+                <p>{username.split(` `).slice(0,2).join(` `)}</p>
                 <p className="lvl"><span>⭐ LvL</span> {level}</p>
             </div>
         </Link>

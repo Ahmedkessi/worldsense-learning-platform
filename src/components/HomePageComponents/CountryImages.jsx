@@ -48,7 +48,7 @@ function CountryImages() {
         ) : (
         <div className="country-image">
           {images.map((src, i) => 
-            <img key={i} src={src} alt="country_place" />
+            <img key={i} src={src} alt={country?.name?.common} />
         )}
         </div> 
         ))}  

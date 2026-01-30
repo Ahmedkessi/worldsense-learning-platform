@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import formatPopulation from "../../utils/formatPopulation";
+
 
 function CountryInfo({country, setInfo}) {
   const navigate = useNavigate()
@@ -22,7 +24,7 @@ function CountryInfo({country, setInfo}) {
       <div className="middle">
         <p>Continent: <span>{country.continent}</span></p>
         <p>Capital: <span>{country.capital}</span></p>
-        <p>Population: <span>{country.population}</span></p>
+        <p>Population: <span>{formatPopulation(country.population)}</span></p>
         <p>Languages: <span>{country.languages}</span></p>
         <p>Currency: <span>{country.currency}</span></p>
       </div>
@@ -34,15 +36,7 @@ function CountryInfo({country, setInfo}) {
      </div>
       
       <div>
-        <p className="note">NOTE:</p>
-        <div className="note-info">{country.note}</div>
         <p className="c-i-close" onClick={handleClose}>X</p>
-      </div>
-
-      <div className="country-images">
-        {country.images.map(img => 
-          <img src={img} alt="ccc" />
-        )}
       </div>
 
     </div>

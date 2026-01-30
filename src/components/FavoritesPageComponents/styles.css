@@ -175,17 +175,13 @@
     background-color: rgba(0, 0, 0, 0.349);
 }
 
-.info-page .country-images {
-    height: 200px;
-    overflow: scroll;
-}
 
 .country-information {
-    border-radius: 2px;
+    border-radius: 10px;
     overflow: hidden;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid rgb(177, 177, 177);
     max-width: 480px;
-    width: 97%;
+    width: 90%;
     margin-top: 30px;
     margin-bottom: 30px;
     position: fixed;
@@ -200,7 +196,7 @@
 
 
 .country-information .top {
-    background: linear-gradient(to right bottom, rgba(132, 0, 255, 0.76) 5%, rgba(0, 238, 255, 0.158) 59%);
+    background: linear-gradient(to right bottom, rgba(255, 0, 0, 0.76) 5%, rgba(0, 238, 255, 0.158) 59%);
     padding: 10px 7px;
     background-position: top;
     animation: 4s backAnimation linear infinite; 
@@ -223,6 +219,7 @@
 .country-information .middle {
     padding: 7px;
     background-color: rgba(247, 0, 235, 0.055);
+    border-top: 4px solid rgba(252, 3, 3, 0.233);
     
 }
 
@@ -233,11 +230,15 @@
 
 
 .country-information .middle p, .country-information .bottom p{
-    color: rgb(0, 238, 255);
+    color: rgb(255, 255, 255);
+    font-weight:600;
 }
 
 .country-information .middle span, .country-information .bottom span{
-    color: rgb(255, 255, 255);
+    color: rgb(214, 212, 212);
+    font-weight: normal;
+    margin-left: 4px;
+    
 }
 
 

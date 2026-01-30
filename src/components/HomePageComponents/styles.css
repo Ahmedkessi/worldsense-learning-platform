@@ -108,19 +108,21 @@
     padding: 10px 0;
 }
 
+
 .weather {
     max-width: 800px;
     width: 100%;
-    background: linear-gradient(to right, rgb(187, 73, 202) 40%, rgb(109, 165, 187));
+    background: linear-gradient(to right, #bb49ca 40%, #6da5bb);
     border-radius: .4rem;
     padding: 4px;
     margin-bottom: 17px;
-    margin-top: 0px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 0;
+    font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
 }
 
 .side-2 p{
     font-size: .9rem;
+    font-weight: 400 !important;
 }
 
 .side-2 .info{
@@ -139,7 +141,7 @@
 .now {
     font-size: .8rem;
     padding: 4px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .temp {
@@ -153,7 +155,7 @@
 .feels-mode {
     font-size: .8rem;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 100;
 }
 
 
@@ -168,6 +170,7 @@
     cursor: pointer;
     font-size: .9rem;
     margin-top: 14px;
+    margin-left: 4px;
 }
 
 .weather--tabs p:hover {
@@ -190,7 +193,7 @@
     background-color: rgba(17, 10, 10, 0.11);
     border-radius: 10%;
     font-size: .8rem;
-    min-width: 50px;
+    padding: 0 4px;
     border: 1px solid #28abf7;
     text-align: center;
     padding-top: 10px;
@@ -198,6 +201,9 @@
 
 .day-weather > p{
     margin-bottom: 8px;
+    font-weight: 400;
+    color: lightgrey;
+    font-size: .8rem;
 }
 
 
@@ -253,9 +259,9 @@ form {
 .form .subtitle {
     margin-top: -24px;
     margin-bottom: 20px;
-    font-size: .99rem;
+    font-size: .8rem;
     border-bottom: 1px solid rgb(132, 0, 255);
-    max-width: 400px;
+    width: fit-content;
 }
 
 form label {
@@ -289,6 +295,7 @@ form .select select {
 
 .rate p {
     font-weight: 500;
+    font-size: .9rem;
 }
 
 .rating {
@@ -337,4 +344,71 @@ form .select select {
     font-size: .9rem;
     padding:0 10px;
     margin-top: -20px;
+}
+
+
+.title-vid {
+    font-size: 1.2rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
+
+
+@media screen and (max-width: 400px) {
+    .title-vid {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+.vid-container {
+    max-width: 800px;
+    width: 100%;
+    border-radius: .4rem;
+    padding: 4px;
+    margin-bottom: 17px;
+    margin-top: 100px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.vid-box {
+    width: 100%;
+    border: 1px solid rgba(211, 211, 211, 0.411);
+    border-radius: 4px;
+}
+
+.vid-container h4 {
+    font-size: 1rem;
+    margin: 0;
+    margin-bottom: 2px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.411);
+}
+
+.vid-container p {
+    font-size: .9rem;
+    margin-bottom: 20px;
+}
+
+.vid-container button {
+    border: 1px solid rgba(211, 211, 211, 0.411);
+    border-radius: 4px;
+    margin: 0 4px;
+    color: rgb(212, 212, 212);
+    font-size: .9rem;
+    font-weight: 400;
+}
+
+.vid-container .err {
+    color: red;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.vid-container .result-pages {
+    margin: 0;
+    margin-top: 8px;
 }

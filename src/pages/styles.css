@@ -62,13 +62,14 @@ h3 {
 
 .developer--background div .dev {
     font-size: .79rem;
-    border: 1px solid rgb(201, 107, 255);
+    font-weight: 100;
+    border: 1px solid rgb(255, 0, 234);
     padding: 4px 10px;
     padding-bottom: 2px;
     text-align: center;
     border-radius: 100px;
-    color: rgb(194, 89, 255);
-    background-color: rgba(16, 0, 105, 0.24);
+    color: rgb(255, 0, 221);
+    background-color: rgba(0, 0, 0, 0.24);
     transition: .2s;
     width: 100%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -238,7 +239,8 @@ h4 {
 
 .msg-box p {
     font-size: .94rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(200, 200, 200);
 }
 
 .msg-box button {

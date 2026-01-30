@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.10.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.562.0",
+    "node-fetch": "^3.3.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-leaflet": "^5.0.0",
@@ -31,5 +34,18 @@
     "globals": "^16.5.0",
     "vite": "^7.2.4",
     "vite-plugin-eslint": "^1.8.1"
-  }
+  },
+  "description": "🌍 WorldWise",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmedkessi/worldwise-learning-platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmedkessi/worldwise-learning-platform/issues"
+  },
+  "homepage": "https://github.com/Ahmedkessi/worldwise-learning-platform#readme"
 }

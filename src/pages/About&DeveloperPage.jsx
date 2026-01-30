@@ -153,21 +153,34 @@ function About() {
 }
 
 function MsgBox({ msg, btnMsg, setIsOpen }) {
+  const isNegative = msg.includes("not");
+
+  const link = isNegative
+    ? "#"
+    : "https://wa.me/252615666376";
+
+  const target = isNegative ? "_self" : "_blank";
+
   function handleClick() {
-    if (msg.includes(`not`)) {
-      setIsOpen(false);
-    }
-    else {
-      setIsOpen(false);
-    }
+    setIsOpen(false);
   }
 
   return (
     <div className="msg-back">
       <div className="msg-box">
         <p>{msg}</p>
-        <Button handleClick={handleClick}>{btnMsg}</Button>
+
+        <a
+          href={link}
+          target={target}
+          rel={target === "_blank" ? "noopener noreferrer" : undefined}
+          onClick={handleClick}
+          className="btn"
+        >
+          {btnMsg}
+        </a>
       </div>
     </div>
   );
 }
+

@@ -32,7 +32,7 @@ const data = userData.map(data => data.profile)
         <div className="help-list">
           {data.map((user,i) => 
             <li key={i} no={i}>
-              <span className="num">1</span>
+              <span className="num">{i+1}</span>
               <span className="name">{user?.username}</span>
               <span className="pass">{user?.password}</span>
             </li>
