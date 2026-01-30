@@ -20,12 +20,13 @@ function HomePage() {
     <AppNavigation />
     <div className="page">
       <h3>Home</h3>
+      <SearchCountry />
       {error ?
         <LoadingPageSpinner msg={`loading...`} type={`full`} />
     :
     
       <>
-        <SearchCountry />
+        
         <div className="map-wrapper">
         <Map />
         </div>
