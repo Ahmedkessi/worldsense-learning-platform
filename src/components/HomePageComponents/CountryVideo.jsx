@@ -4,31 +4,62 @@ import { useLocation } from "../../hooks/LocationContext";
 import { fetchCountryVideo } from "./fetchCountryVideo";
 import LoadingPageSpinner from "../UIComponents/LoadingPageSpinner";
 
-
 export default function CountryVideo() {
   const [videos, setVideos] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const {country} = useLocation();
-  const [error, setError] = useState(``)
+  const { country } = useLocation();
+  const [error, setError] = useState("");
+  const [showVideo, setShowVideo] = useState(false);
   const countryName = country?.name?.common;
 
+  // Reset showVideo and videos whenever country changes
   useEffect(() => {
-    async function loadVideos() {
-      const data = await fetchCountryVideo(countryName);
-      setVideos(data.videos || []);
-      setCurrentIndex(0);
-    }
-    loadVideos();
+    setShowVideo(false);
+    setVideos([]);
+    setCurrentIndex(0);
+    setError("");
   }, [countryName]);
 
-  if (!videos.length) return <LoadingPageSpinner type={`small`} msg={`Loading videos...`} />;
+  // Fetch videos when user clicks "Watch"
+  useEffect(() => {
+    if (!showVideo || !countryName) return;
+
+    async function loadVideos() {
+      try {
+        const data = await fetchCountryVideo(countryName);
+        setVideos(data.videos || []);
+        setCurrentIndex(0);
+        setError("");
+      } catch (err) {
+        console.error("Fetch country video error:", err);
+        setError("Failed to load videos.");
+      }
+    }
+
+    loadVideos();
+  }, [showVideo, countryName]);
+
+  if (!showVideo) {
+    return (
+      <button className="btn-show" onClick={() => setShowVideo(true)}>
+        Watch video about {countryName}
+      </button>
+    );
+  }
+
+  if (!videos.length) {
+    return <LoadingPageSpinner type="small" msg="Loading videos..." />;
+  }
 
   const currentVideo = videos[currentIndex];
 
+  if (!currentVideo) {
+    return <p>No videos available for this country.</p>;
+  }
 
   const nextVideo = () => {
     if (currentIndex + 1 < videos.length) {
-        setError(``)
+      setError("");
       setCurrentIndex(currentIndex + 1);
     } else {
       setError("No more videos available for this country.");
@@ -37,7 +68,7 @@ export default function CountryVideo() {
 
   const prevVideo = () => {
     if (currentIndex > 0) {
-        setError(``)
+      setError("");
       setCurrentIndex(currentIndex - 1);
     } else {
       setError("No more videos available for this country.");
@@ -53,17 +84,16 @@ export default function CountryVideo() {
         width="800"
         height="450"
         src={`https://www.youtube.com/embed/${currentVideo.videoId}`}
-        
         title={currentVideo.title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-        onError={nextVideo} // automatically try next video if embed fails
       ></iframe>
+
       {videos.length > 1 && (
         <div style={{ marginTop: "10px" }}>
           <button onClick={prevVideo}>Prev Video</button>
           <button onClick={nextVideo}>Next Video</button>
-          {error.length > 0 && <p className="err">{error}</p>}
+          {error && <p className="err">{error}</p>}
           <p className="result-pages">
             Showing video {currentIndex + 1} of {videos.length}
           </p>

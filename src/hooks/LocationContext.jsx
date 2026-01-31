@@ -84,6 +84,7 @@ function LocationProvider({ children }) {
           
           
           const data = await res.json();
+          console.log(data);
           setCountryName(() => data.countryName);
         } catch (err) {
           setError(err.message);
@@ -100,49 +101,56 @@ function LocationProvider({ children }) {
 
 
   
-  //Fetching full data country with countryName
-  useEffect(
-    function () {
-      async function fetchCountry() {
-        try {
-          setIsLoading(true);
-          if (countryName.length === 0 || !countryName) return;
+// Fetching full data country with countryName
+useEffect(
+  function () {
+    async function fetchCountry() {
+      try {
+        setIsLoading(true);
+        if (!countryName || countryName.length === 0) return;
 
-          const res = await fetch(
-            `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
-          );
-          if (res.ok === false) {
-            throw new Error(`We couldn’t find ${countryName}. Please try again.`);
-          }
-
-          const data = await res.json();
-          if (
-            data[0].name.common
-              .trim()
-              .toLowerCase()
-              .includes(countryName.trim().toLocaleLowerCase())
-          ) {
-            //data.length &&
-            //data[0].name.common.trim().toLowerCase() === countryName.trim().toLocaleLowerCase() &&
-            setError(``);
-            setWeatherError(``);
-            setCountry(data[0]);
-            setIsLoading(false);
-            setlocated(()=> data[0].latlng);
-
-          } else {
-            throw new Error(`We couldn’t find ${countryName}. Please try again.`);
-          }
-        } catch (err) {
-          setError(err.message);
-          setWeatherError(err.message);
+        const res = await fetch(
+          `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
+        );
+        if (!res.ok) {
+          throw new Error(`We couldn’t find ${countryName}. Please try again.`);
         }
-      }
 
-      fetchCountry();
-    },
-    [countryName, locationMode]
-  );
+        const data = await res.json();
+
+        // Find the country object whose name.common matches exactly (case-insensitive)
+        const matchedCountry = data.find(
+          (c) =>
+            c.name.common.trim().toLowerCase() ===
+            countryName.trim().toLowerCase()
+        );
+
+        if (matchedCountry) {
+          setError(``);
+          setWeatherError(``);
+          setCountry(matchedCountry);
+          setlocated(matchedCountry.latlng);
+          setIsLoading(false);
+        } else {
+          // No exact match found, fallback: pick the first one
+          setError(`No exact match found for "${countryName}". Showing closest result.`);
+          setWeatherError(``);
+          setCountry(data[0]);
+          setlocated(data[0].latlng);
+          setIsLoading(false);
+        }
+      } catch (err) {
+        setError(err.message);
+        setWeatherError(err.message);
+        setIsLoading(false);
+      }
+    }
+
+    fetchCountry();
+  },
+  [countryName, locationMode]
+);
+
 
 
 

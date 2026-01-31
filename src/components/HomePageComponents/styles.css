@@ -155,7 +155,7 @@
 .feels-mode {
     font-size: .8rem;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 100;
+    font-weight: 400;
 }
 
 
@@ -393,7 +393,7 @@ form .select select {
     margin-bottom: 20px;
 }
 
-.vid-container button {
+.vid-container button, .btn-show {
     border: 1px solid rgba(211, 211, 211, 0.411);
     border-radius: 4px;
     margin: 0 4px;

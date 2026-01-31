@@ -28,8 +28,9 @@ function CountryInfo() {
 export default CountryInfo;
 
 function Country({ data, description }) {
-  const currencies = Object.values(data.currencies)[0].name;
-  const languagesString = Object.values(data.languages).join(", ");
+
+  const currencies = Object.values(data?.currencies)[0]?.name;
+  const languagesString = Object.values(data?.languages).join(", ");
   if (!currencies || !languagesString) return;
   return (
     <>
