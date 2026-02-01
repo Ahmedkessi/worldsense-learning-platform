@@ -45,7 +45,7 @@
     padding: 10px 7px;
     font-weight: 400;
     font-size: .99rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin-bottom: 20px;
 }
 
@@ -58,7 +58,7 @@
     padding: 10px 7px;
     font-weight: 400;
     font-size: .9rem;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin-bottom: 20px;
 }
 
@@ -220,7 +220,7 @@
 
 .learn-page .head > p {
     font-size: .9rem;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     text-align: center;
     margin-bottom: 20px;
@@ -598,7 +598,7 @@
 
 .country-page .card p {
     font-size: .84rem !important;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight:400;
 }
 

@@ -31,7 +31,7 @@ function AppRouter() {
   return (
     <>
       <BrowserRouter>
-        <Suspense fallback={<LoadingPageSpinner type="full" />}>          
+        <Suspense fallback={<LoadingPageSpinner type="full" msg={`Loading...`} />}>          
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="/Favourites" element={<FavouritesPage />} />

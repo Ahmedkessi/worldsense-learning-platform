@@ -5,14 +5,18 @@ import LoadingPageSpinner from "../UIComponents/LoadingPageSpinner"
 import { useEffect, useState } from "react";
 
 function CountryWeather() {
-  const { weatherError, weatherData } = useLocation();
+  const { weatherError, weatherData, isLoading } = useLocation();
 
   return (
     <div className="country-weather">
       <h4>Country Weather🌡️</h4>
-      {(weatherError && <Error msg={weatherError} type="small" />) || (
-        weatherData ? <Weather weatherData={weatherData} /> : <LoadingPageSpinner type={`small`} /> 
-      )}
+      {weatherError &&  <Error msg={weatherError} type="small" />}
+
+      {isLoading ? (
+          <LoadingPageSpinner type="small" msg={`Loading country weather...`} />
+        ) : 
+          weatherData && <Weather weatherData={weatherData} /> 
+        }
     </div>
   );
 }
@@ -36,14 +40,11 @@ function Weather({ weatherData }) {
 
 
   //if (!weatherData) return;
-  const { hourly: weatherHourly } = weatherData;
-  const {
-    hourly_units: {
-      relative_humidity_2m: percentage,
-      temperature_2m: celcius,
-      windspeed_10m: speed,
-    },
-  } = weatherData;
+  const weatherHourly = weatherData?.hourly;
+  const percentage = weatherData?.percentage
+  const celcius = weatherData?.celcius
+  const speed = weatherData?.speed
+
 
   
 
@@ -100,9 +101,9 @@ function Weather({ weatherData }) {
 
 
         <div className="weather--tabs">
-          <p onClick={()=> setTap(()=> `temperature`)}>Temperature</p>
-          <p onClick={()=> setTap(()=> `windSpeed`)}>Wind</p>
-          <p onClick={()=> setTap(()=> `humidity`)}>Humidity</p>
+          <p className={tab === `temperature` ? `temperature` : ``} onClick={()=> setTap(()=> `temperature`)}>Temperature</p>
+          <p className={tab === `windSpeed` ? `windSpeed` : ``} onClick={()=> setTap(()=> `windSpeed`)}>Wind</p>
+          <p className={tab === `humidity` ? `humidity` : ``} onClick={()=> setTap(()=> `humidity`)}>Humidity</p>
         </div>
 
 
@@ -134,6 +135,7 @@ function Weather({ weatherData }) {
             key={i}
             day={day}
             setTodayISO={setTodayISO}
+            todayISO={todayISO}
           />
 
         ))}
@@ -146,7 +148,7 @@ function Weather({ weatherData }) {
 
 
 
-function WeekDays({day, setTodayISO}) {
+function WeekDays({day, setTodayISO, todayISO}) {
   const isToday = new Date().toISOString().split(`T`)[0] === day;
   function callFunc() {
     setTodayISO(prev => (prev === day ? `${day}` : day));
@@ -154,7 +156,7 @@ function WeekDays({day, setTodayISO}) {
 
 
   return (
-    <div className={`box`} onClick={callFunc}>
+    <div className={`${todayISO === day ? `today` : ``} box`} onClick={callFunc}>
       <p>{isToday ? `Today` : new Date(day).toDateString().split(` `)[0]}</p>
       {/*{icon[todayWeather.weathercode]?.icon}*/}
       {/*<p>{Math.max(...temperature)}/{Math.min(...temperature)}</p>*/}
@@ -190,12 +192,12 @@ function useWeatherEffects(setTodayIndexes, weatherHourly, todayISO, todayIndexe
   useEffect(
     function () {
       setTodayIndexes(() =>
-        weatherHourly.time
+        weatherHourly?.time
           .map((t, i) => (t.startsWith(todayISO) ? i : null))
           .filter((i) => i != null)
       );
     },
-    [todayISO, weatherHourly.time, setTodayIndexes]
+    [todayISO, weatherHourly?.time, setTodayIndexes]
   );
 
 

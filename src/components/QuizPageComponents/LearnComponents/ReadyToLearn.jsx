@@ -133,7 +133,7 @@ function ReadyToLearn({countries, setQues}) {
     <div className='learn-box ready-to-learn'>
         <TitleBox title={`Ready To Learn`} />
         {countries?.length < 1 ? 
-            <p className="err">There is no country founded!</p>
+            <p className="err">No countries queued for a quiz.</p>
         : 
             <div className="boxes">
                 {countries?.map(country => <CountryBox key={country.id} setQues={setQues} handleQues={handleQues} country={country} />)}

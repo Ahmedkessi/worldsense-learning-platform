@@ -70,8 +70,6 @@ function UpdateProfile() {
                 <input type="password" placeholder="Enter new Password"
                   value={password}  onChange={(e)=> setPassword(e.target.value)} />
 
-                {error.length > 0 ? <div className="err"><Error type={`small`} msg={error}></Error></div> : password.length > 1 ? <div className="err"><LoadingPageSpinner type={`small`} msg={`data is accepted, click sign in to open this account!`}></LoadingPageSpinner></div> : ``}
-
                 <div className="btns">
                   <Button handleClick={handleBack}>Back</Button>
                  <Button>Save</Button>

@@ -14,7 +14,7 @@ function CountryInfo() {
       {error ? <Error msg={error} type="full" /> :
 
         (isLoading ? (
-          <LoadingPageSpinner type="small" />
+          <LoadingPageSpinner type="small" msg={`Loading country information...`} />
         ) : (
           <Country
             data={country}
@@ -29,9 +29,10 @@ export default CountryInfo;
 
 function Country({ data, description }) {
 
-  const currencies = Object.values(data?.currencies)[0]?.name;
-  const languagesString = Object.values(data?.languages).join(", ");
-  if (!currencies || !languagesString) return;
+
+  const currencies = data?.currencies && Object.values(data?.currencies)[0]?.name || null;
+  const languagesString = data?.languages && Object.values(data?.languages).join(", ") || null;
+
   return (
     <>
       <div className="info">
@@ -40,18 +41,25 @@ function Country({ data, description }) {
           <div>
             <p>{data.name.common}</p>
             <p>Continent: {data.continents[0]}</p>
-            <p>
-              Capital: <span>{data.capital}</span>
-            </p>
+            {data?.capital && 
+              <p>
+                Capital: <span>{data.capital}</span>
+              </p>
+            }
             <p>
               Population: <span>{formatPopulation(data.population)}</span>
             </p>
-            <p>
-              Languages: <span>{languagesString}</span>
-            </p>
-            <p>
-              Currency: <span>{currencies}</span>
-            </p>
+            {
+              languagesString && 
+                <p>
+                Languages: <span>{languagesString}</span>
+              </p>
+            }
+            {currencies &&
+              <p>
+                Currency: <span>{currencies}</span>
+              </p>
+            }
           </div>
         </div>
 

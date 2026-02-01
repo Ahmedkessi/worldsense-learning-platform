@@ -59,7 +59,7 @@
 .headFav .select {
     width: 70px;
     width: 90px;
-    font-family: sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: .8rem;
     padding: 7px 3px;
     position: absolute;
@@ -104,7 +104,7 @@
 }
 
 .country-list .name { 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
     flex: .4;
 }
 
@@ -135,7 +135,7 @@
     }
 
     .country-list .name { 
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Inter', sans-serif;
         flex: .4;
     }
 
@@ -231,11 +231,11 @@
 
 .country-information .middle p, .country-information .bottom p{
     color: rgb(255, 255, 255);
-    font-weight:600;
+    font-weight: 400;
 }
 
 .country-information .middle span, .country-information .bottom span{
-    color: rgb(214, 212, 212);
+    color: rgb(240, 230, 230);
     font-weight: normal;
     margin-left: 4px;
     
@@ -269,7 +269,7 @@
 
 .country-information p {
     font-size: .9rem;
-    font-family: sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 

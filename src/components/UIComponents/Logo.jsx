@@ -5,8 +5,8 @@ import "./styles.css";
 function Logo() {
   return (
     <Link to={`/`}>
-      <div>
-        <img src={image} alt="WorldSense-dark-logo" />
+      <div className="logo-box">
+        <img src={image} alt="WorldSense-logo" />
       </div>
     </Link>
   );

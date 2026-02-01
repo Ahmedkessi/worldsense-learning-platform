@@ -9,11 +9,12 @@ import { useLocation } from "../hooks/LocationContext";
 import CountryImages from "../components/HomePageComponents/CountryImages";
 import AppNavigation from "../components/UIComponents/AppNavigation";
 import LoadingPageSpinner from "../components/UIComponents/LoadingPageSpinner";
+import Error from "../components/UIComponents/Error";
 
 
 
 function HomePage() {
-  const {error} = useLocation();
+  const {error, isLoading} = useLocation();
 
   return (
     <>
@@ -21,19 +22,26 @@ function HomePage() {
     <div className="page">
       <h3>Home</h3>
       <SearchCountry />
-      {error ?
-        <LoadingPageSpinner msg={`loading...`} type={`full`} />
+      {isLoading ?
+        <LoadingPageSpinner msg={`Loading data...`} type={`full`} />
     :
     
       <>
         
-        <div className="map-wrapper">
-        <Map />
-        </div>
-        <CountryInfo />
-        <CountryWeather />
-        <CountryImages />
-        <CountryVideo />
+        
+        {error ?
+          <Error type={`full`} msg={error} />
+        :
+        <>
+          <div className="map-wrapper">
+           <Map />
+          </div>
+          <CountryInfo />
+          <CountryWeather />
+          <CountryImages />
+          <CountryVideo />
+        </>
+        }
         {!error && <Form />}
       </>
     }

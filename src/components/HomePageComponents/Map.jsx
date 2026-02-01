@@ -5,10 +5,9 @@ import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from "re
 
 function Map() {
   const {located, setlocated, setMapLocation, country} = useLocation();
-  const lat = located[0];
-  const lng = located[1];
+  const lat = located[0] || 12;
+  const lng = located[1] || 42;
   const name = country.name?.common;
-  if(!lat || !lng) return;
 
 
   return (

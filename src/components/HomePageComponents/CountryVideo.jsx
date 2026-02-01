@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { useLocation } from "../../hooks/LocationContext";
 import { fetchCountryVideo } from "./fetchCountryVideo";
 import LoadingPageSpinner from "../UIComponents/LoadingPageSpinner";
+import Error from "../UIComponents/Error"
 
 export default function CountryVideo() {
   const [videos, setVideos] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { country } = useLocation();
+  const { country, isLoading } = useLocation();
   const [error, setError] = useState("");
   const [showVideo, setShowVideo] = useState(false);
   const countryName = country?.name?.common;
@@ -29,7 +30,7 @@ export default function CountryVideo() {
         const data = await fetchCountryVideo(countryName);
         setVideos(data.videos || []);
         setCurrentIndex(0);
-        setError("");
+        setError(()=> data?.error?.length ? data?.error : ``);
       } catch (err) {
         console.error("Fetch country video error:", err);
         setError("Failed to load videos.");
@@ -39,22 +40,27 @@ export default function CountryVideo() {
     loadVideos();
   }, [showVideo, countryName]);
 
+  if(isLoading) return <LoadingPageSpinner type="small" msg={`Loading videos...`} />
+
   if (!showVideo) {
     return (
       <button className="btn-show" onClick={() => setShowVideo(true)}>
-        Watch video about {countryName}
+        Watch video about {countryName} ▶️
       </button>
     );
   }
 
-  if (!videos.length) {
+  if (!videos.length && !error.length) {
     return <LoadingPageSpinner type="small" msg="Loading videos..." />;
   }
+
+  if(error.length) return <Error type={`small`} msg={error} />
 
   const currentVideo = videos[currentIndex];
 
   if (!currentVideo) {
-    return <p>No videos available for this country.</p>;
+    setError(`No videos available for this country.`)
+    return;
   }
 
   const nextVideo = () => {
@@ -75,6 +81,7 @@ export default function CountryVideo() {
     }
   };
 
+
   return (
     <div className="vid-container">
       <h4>{currentVideo.title}</h4>
@@ -91,8 +98,8 @@ export default function CountryVideo() {
 
       {videos.length > 1 && (
         <div style={{ marginTop: "10px" }}>
-          <button onClick={prevVideo}>Prev Video</button>
-          <button onClick={nextVideo}>Next Video</button>
+          <button onClick={prevVideo}>⏮️ previous Video</button>
+          <button onClick={nextVideo}>next Video ⏭️</button>
           {error && <p className="err">{error}</p>}
           <p className="result-pages">
             Showing video {currentIndex + 1} of {videos.length}

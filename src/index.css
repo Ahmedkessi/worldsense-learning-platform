@@ -10,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #121212;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -47,8 +47,8 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
-  border: 2px solid rgb(82, 58, 216);
+  border-radius: 3px !important;
+  border: 1px solid rgb(82, 58, 216);
   padding: 0.2em 1.3em;
   font-size: 1rem;
   font-weight: 500;
@@ -83,4 +83,8 @@ button:focus-visible {
 .app-container {
   max-width: 7000px;
   margin: 0 auto;
+}
+
+body {
+  font-family: 'Inter', sans-serif !important;
 }

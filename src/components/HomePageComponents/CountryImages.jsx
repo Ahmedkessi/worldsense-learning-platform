@@ -5,7 +5,7 @@ import Error from "../UIComponents/Error";
 import { useLocation } from "../../hooks/LocationContext";
 
 function CountryImages() {
-    const {country, images, setImages} = useLocation()
+    const {country, images, setImages, isLoading:laoding} = useLocation()
     const [isLoading, setIsloading] = useState(false)
     const [error, setError] = useState(``)
 
@@ -37,6 +37,7 @@ function CountryImages() {
         fetchImgs();
     }, [country?.name?.common])
 
+    if(laoding) return <LoadingPageSpinner type="small" msg={`Loading images...`} />
     
     return (
         <>
@@ -44,7 +45,7 @@ function CountryImages() {
         {error ? <Error msg={error} type="full" /> :
 
         (isLoading ? (
-          <LoadingPageSpinner type="small" />
+          <LoadingPageSpinner type="small" msg={`Loading images...`} />
         ) : (
         <div className="country-image">
           {images.map((src, i) => 

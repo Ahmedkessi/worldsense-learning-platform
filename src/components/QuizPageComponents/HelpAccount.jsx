@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import image from "../../assets/WorldSense-light-logo.png";
+import image from "../../assets/logo1.png";
 import "./styles.css";
 
 function HelpAccount() {

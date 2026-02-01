@@ -1,6 +1,5 @@
 import "./styles.css";
-import DeveloperImage from "../assets/DeveloperImage.jpeg";
-import Button from "../components/UIComponents/Button";
+import DeveloperImage from "../assets/DeveloperImage.jpg";
 import { useState } from "react";
 import AppNavigation from "../components/UIComponents/AppNavigation";
 import { Youtube, Facebook, MessageSquareMore } from "lucide-react";
@@ -38,7 +37,6 @@ export default About_Developer;
 function Developer({ children }) {
   return (
     <div className="container-card">
-      {/*<h4>Developer</h4>*/}
       {children}
     </div>
   );
@@ -48,13 +46,13 @@ function DeveloperInfo({ setIsOpen, setMessage, setBtnMessage }) {
 
   function handleWhatsAppClick() {
     setIsOpen(true);
-    setMessage(`✨Whats app link was found on the Internet🎉🎉`);
-    setBtnMessage(`Open this Link ↗️`);
+    setMessage(`✨ WhatsApp contact link available`);
+    setBtnMessage(`Open Link ↗️`);
   }
 
   function handleFacebookClick() {
     setIsOpen(true);
-    setMessage(`This link was not found on the Internet!`);
+    setMessage(`This link is currently unavailable.`);
     setBtnMessage(`⬅️ Go Back`);
   }
 
@@ -70,10 +68,10 @@ function DeveloperInfo({ setIsOpen, setMessage, setBtnMessage }) {
         <div>
           <p className="name">Ahmed Osman Ahmed</p>
           <p className="num">+252 615666376</p>
-          <p className="dev">Front end Developer</p>
+          <p className="dev">Front-End Developer</p>
           <p className="languages">
             HTML <span>|</span> CSS <span>|</span> SASS <span>|</span>{" "}
-            JavaScript <span>|</span> React JS
+            JavaScript <span>|</span> React <span>|</span> Redux <span>|</span> APIs
           </p>
 
           <div className="links">
@@ -95,9 +93,11 @@ function DeveloperInfo({ setIsOpen, setMessage, setBtnMessage }) {
 
       <div className="card">
           <h5>👨‍💻 About the Developer</h5>
-          <p>This platform was designed and developed by Ahmed, a student and front-end developer with a strong interest in building modern, scalable web applications.
-          This project was created as part of a learning journey focused on mastering React and its ecosystem, including component-based architecture, state management, performance optimization, and single-page application design. Special attention was given to clean code structure, user experience, and real-world development practices.
-          WorldSense reflects a balance between technical growth and creative problem-solving, combining data, interaction, and design into a cohesive product. This project continues to evolve as new features and improvements are added over time.
+          <p>
+          WorldSense was independently designed and developed by Ahmed Osman Ahmed, a student and front-end developer focused on building modern, scalable, and production-ready web applications.
+          This project was planned, architected, and implemented end-to-end by one developer. From UI design and component structure to state management, API integrations, debugging, and performance optimization, every technical decision and line of code was executed personally.
+          Artificial intelligence tools were used strictly for research, API exploration, and troubleshooting support, while all engineering and system design were completed independently.
+          The development approach emphasizes clean architecture, maintainable code, strong user experience, and real-world engineering standards. WorldSense represents continuous growth, discipline, and practical software craftsmanship rather than a tutorial or team-built project.
           </p>
         </div>
     </div>
@@ -108,13 +108,14 @@ function DeveloperInfo({ setIsOpen, setMessage, setBtnMessage }) {
 function About() {
   return (
     <div className="container-card">
-      {/*<h4>About</h4>*/}
       <div>
         <div className="card">
           <h5>📘 About the Platform</h5>
-          <p>WorldSense is an interactive web platform designed to help users explore, understand, and learn about the world through data-driven insights and intuitive map-based interaction.
-          The platform allows users to discover countries by searching or clicking directly on an interactive map, instantly accessing key information such as population, languages, currency, region, and real-time weather conditions. To enhance engagement and learning, users can save favorite countries, add personal notes, track visited locations, and test their knowledge through a built-in quiz system.
-          WorldSense is built as a single-page application using modern web technologies, focusing on performance, usability, and clean architecture. The goal of the platform is to transform global data into an accessible, educational, and personalized experience.
+          <p>
+          WorldSense is an interactive geography and data exploration platform that transforms global information into a clear, visual, and engaging experience.
+          Users can explore countries through direct map interaction or smart search and instantly access structured insights including population, languages, currency, region details, real-time weather conditions, country descriptions, curated images, and related videos.
+          The platform combines multiple external data sources into one cohesive interface to make learning about the world simple, fast, and practical.
+          Built as a single-page application, WorldSense prioritizes performance, usability, and clean architecture to deliver a smooth and modern user experience.
           </p>
         </div>
 
@@ -122,13 +123,17 @@ function About() {
 
         <div className="card">
           <h5>🧭 Key Features</h5>
-          <p>Interactive world map with click-to-explore functionality
-          Country search with detailed insights and visuals
-          Real-time weather data by location
-          Favorites system for countries and places
-          Personal notes and learning history
-          Quiz module to reinforce geographical knowledge
-          Fast, responsive single-page experience</p>
+          <p>
+          Interactive world map with click-to-explore navigation<br/>
+          Smart country search with detailed statistics and insights<br/>
+          Real-time weather data by location<br/>
+          Country images and places gallery integration<br/>
+          Country videos powered by YouTube Data v3 API<br/>
+          Favorites system for saving countries<br/>
+          Personal notes and learning history tracking<br/>
+          Quiz module for reinforcing geographical knowledge<br/>
+          Fast, responsive single-page application performance
+          </p>
         </div>
 
 
@@ -136,24 +141,29 @@ function About() {
         <div className="card">
           <h5>🚀 Technology Stack:</h5>
           <ul>
-            <li>React (with Hooks)</li>
+            <li>React (Hooks & component architecture)</li>
             <li>Redux Toolkit for state management</li>
             <li>React Router for navigation</li>
             <li>Vite for development and build tooling</li>
-            <li>Leaflet & OpenStreetMap for mapping</li>
-            <li>External APIs for country, geolocation, and weather data</li>
+            <li>Leaflet & OpenStreetMap for interactive mapping</li>
+            <li>REST Countries API for country data</li>
+            <li>Weather APIs for live forecasts</li>
+            <li>iStock Image API for country images</li>
+            <li>YouTube Data v3 API for country videos</li>
+            <li>Modern JavaScript (ES6+)</li>
           </ul>
         </div>
 
       </div>
 
-      <footer>© 2025 WorldSense. Developed by Ahmed_Osman. All rights reserved.</footer>
+      <footer>
+        © {new Date().getFullYear()} WorldSense. Developed by Ahmed_Osman. All rights reserved.
+      </footer>
     </div>
   );
 }
-
 function MsgBox({ msg, btnMsg, setIsOpen }) {
-  const isNegative = msg.includes("not");
+  const isNegative = msg.includes("unavailable");
 
   const link = isNegative
     ? "#"
@@ -170,15 +180,22 @@ function MsgBox({ msg, btnMsg, setIsOpen }) {
       <div className="msg-box">
         <p>{msg}</p>
 
-        <a
-          href={link}
-          target={target}
-          rel={target === "_blank" ? "noopener noreferrer" : undefined}
-          onClick={handleClick}
-          className="btn"
-        >
-          {btnMsg}
-        </a>
+        
+
+        <div style={{display: "flex", gap: `10px`}}>
+          {<button onClick={handleClick}>back</button>}
+          {!isNegative &&
+            <a
+            href={link}
+            target={target}
+            rel={target === "_blank" ? "noopener noreferrer" : undefined}
+            onClick={handleClick}
+            className="btn"
+          >
+            {btnMsg}
+          </a>
+        }
+        </div>
       </div>
     </div>
   );

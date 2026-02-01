@@ -16,7 +16,7 @@ function Learned({countries}) {
     <div className='learn-box learned'>
         <TitleBox title={`Learned Countries`} />
         {countries?.length < 1 ? 
-            <p className="err">There is no country you learned!</p>
+            <p className="err">No countries mastered yet. Keep exploring!</p>
         : 
             <div className="boxes">
                 {countries?.map(country => <CountryBox setCurrCountry={setCurrCountry} key={country.id} country={country} />)}

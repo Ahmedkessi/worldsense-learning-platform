@@ -25,7 +25,7 @@ function NotLearned({countries}) {
     <div className='learn-box not-learned'>
         <TitleBox title={`Not Learned Yet`} />
         {countries?.length < 1 ? 
-            <p className="err">There is not country founded!</p>
+            <p className="err">All caught up! Every country is on your radar.</p>
         :
             <div className="boxes">
                 {countries?.map(country => <CountryBox key={country.id} handleLearning={handleLearning} country={country} setCurrCountry={setCurrCountry} />)}

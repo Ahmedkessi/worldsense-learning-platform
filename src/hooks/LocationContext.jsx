@@ -78,13 +78,13 @@ function LocationProvider({ children }) {
           const res = await fetch(
             `https://secure.geonames.org/countrySubdivisionJSON?lat=${location[0]}&lng=${location[1]}&username=ahmedkessi`
           );
+          console.log(res);
           if (!res.ok) {
             throw new Error("Reverse geocoding failed");
           }
           
           
           const data = await res.json();
-          console.log(data);
           setCountryName(() => data.countryName);
         } catch (err) {
           setError(err.message);
@@ -112,11 +112,13 @@ useEffect(
         const res = await fetch(
           `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
         );
+        console.log(res);
         if (!res.ok) {
           throw new Error(`We couldn’t find ${countryName}. Please try again.`);
         }
 
         const data = await res.json();
+        console.log(data);
 
         // Find the country object whose name.common matches exactly (case-insensitive)
         const matchedCountry = data.find(
@@ -124,6 +126,8 @@ useEffect(
             c.name.common.trim().toLowerCase() ===
             countryName.trim().toLowerCase()
         );
+
+        console.log(matchedCountry);
 
         if (matchedCountry) {
           setError(``);
@@ -133,7 +137,7 @@ useEffect(
           setIsLoading(false);
         } else {
           // No exact match found, fallback: pick the first one
-          setError(`No exact match found for "${countryName}". Showing closest result.`);
+          setError(`No exact match found for "${countryName}".`);
           setWeatherError(``);
           setCountry(data[0]);
           setlocated(data[0].latlng);
@@ -164,9 +168,10 @@ useEffect(
           if (countryName.length === 0) return;
           
           const res = await fetch(
-            `https://en.wikipedia.org/api/rest_v1/page/summary/${country?.name.common}`
+            `https://en.wikipedia.org/api/rest_v1/page/summary/${country?.name?.common}`
           );
           const data = await res.json();
+          console.log(data);
           setCountryDescription(data.extract);
           setIsLoading(false);
         } catch (err) {
@@ -176,7 +181,7 @@ useEffect(
 
       fetchCountry();
     },
-    [countryName, country]
+    [country?.name?.common]
   );
 
 
