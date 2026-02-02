@@ -22,6 +22,12 @@ function reducer(state, action) {
       case `start`:
         return {
           ...state,
+          index: 0,
+          points: 0,
+          correctAnswers: 0,
+          wrongAnswers: 0,
+          xp: 0, 
+          secondsRemaining: 10 * SECS_PER_QUESTION,
           page: 1,
         }
 
@@ -48,6 +54,7 @@ function reducer(state, action) {
           correctAnswers: 0,
           wrongAnswers: 0,
           xp: 0, 
+          page: 2,
           secondsRemaining: 10 * SECS_PER_QUESTION,
         }
 

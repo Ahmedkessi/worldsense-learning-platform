@@ -16,13 +16,15 @@ import Error from "../components/UIComponents/Error";
 function HomePage() {
   const {error, isLoading} = useLocation();
 
+
   return (
     <>
     <AppNavigation />
     <div className="page">
       <h3>Home</h3>
       <SearchCountry />
-      {isLoading ?
+
+      {isLoading && !error  ?
         <LoadingPageSpinner msg={`Loading data...`} type={`full`} />
     :
     

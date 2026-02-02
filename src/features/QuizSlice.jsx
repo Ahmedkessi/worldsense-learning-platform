@@ -225,6 +225,13 @@ const QuizSlice = createSlice({
             
             levelUp && state.progress.level++
             state.progress.xp = state.progress.xp + action.payload;
+
+            state.notifications.push({
+                  type: "master country",
+                  message: "🔥 You mastered new 5 countries. +30 XP",
+                  createdAt: Date.now(),
+                  read: false,
+               });
       },
 
       readNotification(state, action) {

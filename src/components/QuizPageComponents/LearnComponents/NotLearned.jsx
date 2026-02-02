@@ -9,7 +9,6 @@ import CountrySummary from "./CountrySummary";
 
 function NotLearned({countries}) {
     const dispatch = useDispatch()
-    console.log(countries);
     const [currCountry, setCurrCountry] = useState();
 
     if(currCountry) return <CountrySummary currCountry={currCountry} setCurrCountry={setCurrCountry} />

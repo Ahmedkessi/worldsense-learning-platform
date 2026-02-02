@@ -7,7 +7,6 @@ import CountrySummary from "./CountrySummary";
 
 
 function Learned({countries}) {
-  console.log(countries);
   const [currCountry, setCurrCountry] = useState();
 
     if(currCountry) return <CountrySummary currCountry={currCountry} setCurrCountry={setCurrCountry} />

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { learn } from "../../../features/QuizSlice";
 
-function chunkArray(array, size = 10) {
+function chunkArray(array, size = 5) {
   const result = [];
   for (let i = 0; i < array.length; i += size) {
     result.push(array.slice(i, i + size));
@@ -17,23 +17,38 @@ function LearnFavourites() {
     const countries = useSelector(store => store?.user?.favouriteCountries);
     const learned = countries?.filter(c => c?.status === "learned");
 
-    const last_10_Learned = chunkArray(learned, 30);
-    const learnProgress = last_10_Learned.at(-1);
+    const last_5_Learned = chunkArray(learned, 5);
+    const learnProgress = last_5_Learned.at(-1);
+
+    
+    const [length, setLength] = useState(()=> {
+        const stored = localStorage.getItem("length");
+        if(stored === `undefined`) return {};
+        return stored ? JSON.parse(stored) : {};
+    })
+
+    
+    useEffect(() => {
+        localStorage.setItem("length", JSON.stringify(learnProgress.length));
+    }, [learnProgress.length])
+
 
     const dispatch = useDispatch();
     const lastRewardedChunkRef = useRef(-1);
 
+
     useEffect(() => {
-        if (!learnProgress) return;
-            const currentChunkIndex = last_10_Learned.length - 1;
+        if (!learnProgress.length) return;
+            const currentChunkIndex = last_5_Learned?.length - 1;
+
             if (
-                learnProgress.length === 30 &&
+                learnProgress.length === 5 &&
                 lastRewardedChunkRef.current !== currentChunkIndex
                 ) {
                 dispatch(learn(30));
                 lastRewardedChunkRef.current = currentChunkIndex;
             }
-    }, [last_10_Learned?.length, learnProgress?.length]);
+    }, [last_5_Learned?.length, learnProgress?.length, length]);
 
   return (
     <div className='learn'>
@@ -60,7 +75,7 @@ function LearnFavourites() {
                     </div>
                     <div className="progress-info">
                         <p>Progress</p>
-                        <p>{learnProgress?.length || 0}/30</p>
+                        <p>{learnProgress?.length || 0}/5</p>
                     </div>
                 </div>
 

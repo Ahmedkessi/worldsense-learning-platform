@@ -77,7 +77,7 @@ function Form() {
     :
 
     <form className="form" onSubmit={handlerSubmit}>
-      <h4>Save This Place🗺️</h4>
+      <h4>Save This Country 🗺️</h4>
       <p className="subtitle">
         Rate it and choose how this country fits your journey
       </p>

@@ -6,6 +6,6 @@ export async function fetchCountryVideo(countryName) {
     const data = await res.json();
     return data;
   } catch (err) {
-    return { videos: [], error:`No videos available for this country.`, selected: null };
+    return { videos: [], error:`Failed to load videos.`, selected: null };
   }
 }

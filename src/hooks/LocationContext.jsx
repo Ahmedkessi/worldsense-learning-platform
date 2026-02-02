@@ -74,11 +74,10 @@ function LocationProvider({ children }) {
         try {
           
           setError(``);
-          if(location.length !== 2) throw new Error("Reverse geocoding failed");;
+          //if(location.length !== 2) throw new Error("Reverse geocoding failed");;
           const res = await fetch(
-            `https://secure.geonames.org/countrySubdivisionJSON?lat=${location[0]}&lng=${location[1]}&username=ahmedkessi`
+            `https://secure.geonames.org/countrySubdivisionJSON?lat=${location?.at(0)}&lng=${location?.at(1)}&username=ahmedkessi`
           );
-          console.log(res);
           if (!res.ok) {
             throw new Error("Reverse geocoding failed");
           }
@@ -112,13 +111,11 @@ useEffect(
         const res = await fetch(
           `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
         );
-        console.log(res);
         if (!res.ok) {
           throw new Error(`We couldn’t find ${countryName}. Please try again.`);
         }
 
         const data = await res.json();
-        console.log(data);
 
         // Find the country object whose name.common matches exactly (case-insensitive)
         const matchedCountry = data.find(
@@ -127,7 +124,6 @@ useEffect(
             countryName.trim().toLowerCase()
         );
 
-        console.log(matchedCountry);
 
         if (matchedCountry) {
           setError(``);
@@ -171,7 +167,6 @@ useEffect(
             `https://en.wikipedia.org/api/rest_v1/page/summary/${country?.name?.common}`
           );
           const data = await res.json();
-          console.log(data);
           setCountryDescription(data.extract);
           setIsLoading(false);
         } catch (err) {

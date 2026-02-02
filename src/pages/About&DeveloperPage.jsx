@@ -91,8 +91,8 @@ function DeveloperInfo({ setIsOpen, setMessage, setBtnMessage }) {
         </div>
       </div>
 
-      <div className="card">
-          <h5>👨‍💻 About the Developer</h5>
+      <div className="card c-1">
+          <h2>👨‍💻 About the Developer</h2>
           <p>
           WorldSense was independently designed and developed by Ahmed Osman Ahmed, a student and front-end developer focused on building modern, scalable, and production-ready web applications.
           This project was planned, architected, and implemented end-to-end by one developer. From UI design and component structure to state management, API integrations, debugging, and performance optimization, every technical decision and line of code was executed personally.
@@ -107,10 +107,10 @@ function DeveloperInfo({ setIsOpen, setMessage, setBtnMessage }) {
 
 function About() {
   return (
-    <div className="container-card">
-      <div>
+    <div className="container-card c-c-1">
+      <div className="c-c-1">
         <div className="card">
-          <h5>📘 About the Platform</h5>
+          <h2>📘 About the Platform</h2>
           <p>
           WorldSense is an interactive geography and data exploration platform that transforms global information into a clear, visual, and engaging experience.
           Users can explore countries through direct map interaction or smart search and instantly access structured insights including population, languages, currency, region details, real-time weather conditions, country descriptions, curated images, and related videos.
@@ -122,7 +122,7 @@ function About() {
 
 
         <div className="card">
-          <h5>🧭 Key Features</h5>
+          <h2>🧭 Key Features</h2>
           <p>
           Interactive world map with click-to-explore navigation<br/>
           Smart country search with detailed statistics and insights<br/>
@@ -139,7 +139,7 @@ function About() {
 
 
         <div className="card">
-          <h5>🚀 Technology Stack:</h5>
+          <h2>🚀 Technology Stack:</h2>
           <ul>
             <li>React (Hooks & component architecture)</li>
             <li>Redux Toolkit for state management</li>
@@ -148,7 +148,7 @@ function About() {
             <li>Leaflet & OpenStreetMap for interactive mapping</li>
             <li>REST Countries API for country data</li>
             <li>Weather APIs for live forecasts</li>
-            <li>iStock Image API for country images</li>
+            <li>Unsplash Image API for country images</li>
             <li>YouTube Data v3 API for country videos</li>
             <li>Modern JavaScript (ES6+)</li>
           </ul>

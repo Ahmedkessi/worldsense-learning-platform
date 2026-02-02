@@ -15,7 +15,7 @@ function CountryWeather() {
       {isLoading ? (
           <LoadingPageSpinner type="small" msg={`Loading country weather...`} />
         ) : 
-          weatherData && <Weather weatherData={weatherData} /> 
+         weatherData ? <Weather weatherData={weatherData} /> : <LoadingPageSpinner type="small" msg={`Loading country weather...`} />
         }
     </div>
   );
@@ -35,15 +35,16 @@ function Weather({ weatherData }) {
   const [todayWeather, setTodayWeather] = useState([]);
   const [tab, setTap] = useState(`temperature`);
   const [todayISO, setTodayISO] = useState(new Date().toISOString().split(`T`)[0]);
+  console.log(weatherData);
 
 
 
 
   //if (!weatherData) return;
   const weatherHourly = weatherData?.hourly;
-  const percentage = weatherData?.percentage
-  const celcius = weatherData?.celcius
-  const speed = weatherData?.speed
+  const percentage = weatherData?.hourly_units?.relative_humidity_2 || `%`;
+  const celcius = weatherData?.hourly_units?.apparent_temperature || `°C`;
+  const speed = weatherData?.hourly_units?.windspeed_10m || "km/h";
 
 
   

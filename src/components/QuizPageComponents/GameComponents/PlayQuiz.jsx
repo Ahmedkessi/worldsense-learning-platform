@@ -25,8 +25,9 @@ export default function PlayQuiz({
   dispatch,
   secondsRemaining,
 }) {
+  const [cor, setCorrect] = useState(false)
   const { questions } = useLocation();
-  const { setQues } = useFavourites();
+  const { setQues, ques } = useFavourites();
 
   const [locked, setLocked] = useState(false);
   const [showNext, setShowNext] = useState(false);
@@ -97,7 +98,7 @@ export default function PlayQuiz({
         </div>
         <div className="game-progress-info">
           <p>Points: {points}/{totalPoints}</p>
-          <p className={`dif ${difficulty || `medium`}`}>{difficulty || `medium`}</p>
+          <p className={`dif ${difficulty || `medium`}`}>{difficulty || ques.name}</p>
         </div>
       </div>
 
@@ -121,6 +122,8 @@ export default function PlayQuiz({
             setShowNext={setShowNext}
             type={currQuestion?.type}
             ind={index}
+            cor={cor}
+            setCorrect={setCorrect}
           />
         ))}
       </div>
@@ -156,15 +159,19 @@ function Answer({
   setShowNext,
   type,
   ind,
+  cor,
+  setCorrect,
 }) {
   const isCorrect = ans === correct;
   const [currClick, setCurrClick] = useState(false)
 
   useEffect(() => {
     setCurrClick(false)
+    setCorrect(false)
   }, [ind]);
 
   function handleClick() {
+    setCorrect(()=> !isCorrect ? true : false)
     if (locked) return;
     setCurrClick(true)
     dispatch({
@@ -176,6 +183,8 @@ function Answer({
       },
     });
 
+    
+
     setLocked(true);
     setShowNext(true);
   }
@@ -184,7 +193,9 @@ function Answer({
     <button
       className={`answer ${
         currClick ? (isCorrect ? "correct" : "wrong") : ""
-      }`}
+      }
+        ${cor && !currClick && isCorrect ? `correct` : ``}
+      `}
       onClick={handleClick}
       disabled={locked}
     >

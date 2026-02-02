@@ -45,7 +45,7 @@ function ResultQuiz({ dispatch, points, questions, correctAnswers, wrongAnswers 
 
   function handleRetry() {
     finalizeQuiz();
-    dispatch({ type: "start" });
+    dispatch({ type: "retry" });
   }
 
   function handleClose() {
