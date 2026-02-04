@@ -4,7 +4,7 @@ import "./styles.css";
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
 
 function Map() {
-  const {located, setlocated, setMapLocation, country} = useLocation();
+  const {located, setlocated, setMapLocation, country, setLocationMode} = useLocation();
   const lat = located[0] || 12;
   const lng = located[1] || 42;
   const name = country.name?.common;
@@ -29,6 +29,7 @@ function Map() {
         onClick={({ lat, lng }) => {
         setlocated([lat, lng]);
         setMapLocation([lat, lng])
+        setLocationMode(()=> `search`)
         }}
       />
 

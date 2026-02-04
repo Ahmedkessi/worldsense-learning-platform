@@ -10,6 +10,7 @@ function LocationProvider({ children }) {
   
   const [searchCountries, setSearchCountries] = useState([])
   const [isByTap, setIsByTap] = useState(false)
+  const [isDetecting, setIsDetecting] = useState();
 
   const [location, setLocation] = useState([]);
   const [located, setlocated] = useState([]);
@@ -57,9 +58,10 @@ function LocationProvider({ children }) {
   // Getting User Loaction and lat, lng
   useEffect(
     function () {
-      console.log(`called`)
+      setIsDetecting(true)
       setIsLoading(true)
       navigator.geolocation.getCurrentPosition((pos) => {
+        setIsDetecting(false)
         if (locationMode !== `geo`) return;
         setLocation(()=> [pos.coords.latitude, pos.coords.longitude]);
       });
@@ -96,8 +98,6 @@ function LocationProvider({ children }) {
           
           
           const data = await res.json();
-          console.log(Boolean(data?.status));
-          console.log(`loaded name`, data, data?.status?.message);
           if(Boolean(data?.status) && data?.status?.message !== `error parsing parameter`) {
             setCountry(()=> []);
             throw new Error(`invalid lat/lng. Search country mannually`);
@@ -106,7 +106,6 @@ function LocationProvider({ children }) {
           
           
         } catch (err) {
-          console.log(err);
           setError(err.message);
           setWeatherError(err.message);
         }
@@ -127,7 +126,6 @@ useEffect(
     async function fetchCountry() {
       try {
         setIsLoading(true);
-        console.log(`full loading`);
         if (!countryName || countryName.length === 0 || isByTap) return;
 
         const res = await fetch(
@@ -138,7 +136,6 @@ useEffect(
         }
 
         const data = await res.json();
-        console.log(data);
         setSearchCountries(data)
 
         // Find the country object whose name.common matches exactly (case-insensitive)
@@ -167,7 +164,6 @@ useEffect(
         setError(err.message);
         setWeatherError(err.message);
         setIsLoading(false);
-        console.log(`loading done`);
       }
     }
 
@@ -214,7 +210,6 @@ useEffect(
       setIsLoading(true);
       async function fetchCountry() {
         try {
-          console.log(country);
           if(country.length && isByTap) setError(``)
           setWeatherError(``)
           if (country.length === 0) return;
@@ -249,11 +244,11 @@ useEffect(
 
         const res = await fetch(`https://opentdb.com/api.php?amount=10&category=${queCategory}&difficulty=${queDificulity}&type=multiple`)
         const data = await res.json();
-        setQuestions(()=> data.results)
+        setQuestions(()=> data.results);
       }
 
       catch(err) {
-        console.log(err)
+        console.log(err);
       }
     }
 
@@ -273,6 +268,7 @@ useEffect(
         country,
         setCountry,
         isLoading,
+        setIsLoading,
         error,
         countryDescription,
         weatherError,
@@ -289,6 +285,7 @@ useEffect(
         setQuestions,
         searchCountries,
         setIsByTap,
+        isDetecting,
       }}
     >
       {children}

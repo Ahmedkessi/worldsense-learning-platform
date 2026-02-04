@@ -35,7 +35,6 @@ function Weather({ weatherData }) {
   const [todayWeather, setTodayWeather] = useState([]);
   const [tab, setTap] = useState(`temperature`);
   const [todayISO, setTodayISO] = useState(new Date().toISOString().split(`T`)[0]);
-  console.log(weatherData);
 
 
 
