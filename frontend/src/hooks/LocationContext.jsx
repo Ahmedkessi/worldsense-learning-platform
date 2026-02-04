@@ -100,7 +100,7 @@ function LocationProvider({ children }) {
           console.log(`loaded name`, data, data?.status?.message);
           if(Boolean(data?.status) && data?.status?.message !== `error parsing parameter`) {
             setCountry(()=> []);
-            throw new Error(`${data?.status?.message}. Search country mannually`)
+            throw new Error(`invalid lat/lng. Search country mannually`);
           }
           setCountryName(() => data.countryName);
           
