@@ -824,9 +824,10 @@ form .select select {
     }
 
     .videos {
-        padding: 4px 2px;
-        padding-top: 7px;
+        padding: 2px 2px;
+        padding-top: 17px;
         border-width: 1px;
+        margin-top: 10px;
     }
 
     .list-video img {
