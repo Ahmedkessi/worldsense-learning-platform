@@ -38,10 +38,10 @@ function Country({ data, description }) {
     <>
       <div className="info">
         <div className="info-top">
-            <img className="img" src={data?.flags?.png || `#`} alt={data.flags.alt} />
+            <img className="img" src={data?.flags?.png || `#`} alt={data?.flags?.alt || data?.name?.common || `#`} />
             <div>
               <p className="t-name">{data?.name?.common}</p>
-              <p className="t-map"><MapPin /> {data.continents[0]}</p>
+              <p className="t-map"><MapPin /> {data?.continents[0] || ``}</p>
             </div>
         </div>
 
@@ -54,12 +54,12 @@ function Country({ data, description }) {
         <div className="info-bottom">
             {data?.capital && 
               <p>
-                 <span className="b-title">Capital</span> <span>{data.capital}</span>
+                 <span className="b-title">Capital</span> <span>{data?.capital}</span>
               </p>
             }
 
             <p>
-               <span className="b-title">Population</span> <span>{formatPopulation(data.population)}</span>
+               <span className="b-title">Population</span> <span>{formatPopulation(data?.population)}</span>
             </p>
 
             {

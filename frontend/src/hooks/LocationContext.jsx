@@ -9,6 +9,7 @@ function LocationProvider({ children }) {
   const [images, setImages] = useState([])
   
   const [searchCountries, setSearchCountries] = useState([])
+  const [isByTap, setIsByTap] = useState(false)
 
   const [location, setLocation] = useState([]);
   const [located, setlocated] = useState([]);
@@ -57,6 +58,7 @@ function LocationProvider({ children }) {
   useEffect(
     function () {
       console.log(`called`)
+      setIsLoading(true)
       navigator.geolocation.getCurrentPosition((pos) => {
         if (locationMode !== `geo`) return;
         setLocation(()=> [pos.coords.latitude, pos.coords.longitude]);
@@ -112,7 +114,7 @@ function LocationProvider({ children }) {
 
       fetchCountry();
     },
-    [location, locationMode]
+    [location]
   );
 
 
@@ -126,7 +128,7 @@ useEffect(
       try {
         setIsLoading(true);
         console.log(`full loading`);
-        if (!countryName || countryName.length === 0) return;
+        if (!countryName || countryName.length === 0 || isByTap) return;
 
         const res = await fetch(
           `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
@@ -171,7 +173,7 @@ useEffect(
 
     fetchCountry();
   },
-  [countryName, locationMode]
+  [countryName]
 );
 
 
@@ -212,6 +214,8 @@ useEffect(
       setIsLoading(true);
       async function fetchCountry() {
         try {
+          console.log(country);
+          if(country.length && isByTap) setError(``)
           setWeatherError(``)
           if (country.length === 0) return;
           const url = `https://api.open-meteo.com/v1/forecast?latitude=${country?.latlng[0]}&longitude=${country?.latlng[1]}&timezone=auto&hourly=temperature_2m,relative_humidity_2m,windspeed_10m,windgusts_10m,weathercode,apparent_temperature`;
@@ -284,6 +288,7 @@ useEffect(
         questions, 
         setQuestions,
         searchCountries,
+        setIsByTap,
       }}
     >
       {children}

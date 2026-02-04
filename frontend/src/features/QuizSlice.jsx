@@ -91,7 +91,7 @@ const QuizSlice = createSlice({
 
       deleteFavCountry(state, action) {
          state.favouriteCountries = state.favouriteCountries.filter(c => c.id !== action.payload)
-         state.lessonQuizCompleted = state.lessonQuizCompleted > 0 ? state.lessonQuizCompleted - 1 : 0;
+         //state.lessonQuizCompleted = state.lessonQuizCompleted > 0 ? state.lessonQuizCompleted - 1 : 0;
       },
 
       addToLearning(state, action) {

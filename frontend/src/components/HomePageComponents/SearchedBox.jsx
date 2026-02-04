@@ -3,7 +3,7 @@ import { useLocation } from "../../hooks/LocationContext";
 import "./styles.css";
 
 const SearchedBox = ({setIsSearching, isLoading, countries, setVal}) => {
-    const {setCountryName} = useLocation();
+    const {setCountryName, setIsByTap} = useLocation();
 
     if(!countries) return;
 
@@ -14,7 +14,7 @@ const SearchedBox = ({setIsSearching, isLoading, countries, setVal}) => {
                 <Loader className="load" />
             </div>
         :
-            countries.map((country,i)=> <ResultList setIsSearching={setIsSearching} setVal={setVal} country={country} setCountry={setCountryName} key={i} />)
+            countries.map((country,i)=> <ResultList setIsByTap={setIsByTap} setIsSearching={setIsSearching} setVal={setVal} country={country} setCountryName={setCountryName} key={i} />)
         }
     </div>
   );
@@ -23,14 +23,14 @@ const SearchedBox = ({setIsSearching, isLoading, countries, setVal}) => {
 export default SearchedBox;
 
 
-function ResultList({setCountry, country, setVal,setIsSearching}) {
+function ResultList({setCountryName, country, setVal,setIsSearching, setIsByTap}) {
     function handleClick() {
+        
         setVal(``)
-        setCountry(country?.name?.common)
+        setCountryName(country?.name?.common)
         setIsSearching(``)
     }
 
-    console.log(country);
 
     return(
         <>

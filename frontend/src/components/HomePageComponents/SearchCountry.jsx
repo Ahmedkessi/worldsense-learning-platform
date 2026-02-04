@@ -3,7 +3,7 @@ import "./styles.css";
 import { MapPin, SearchIcon } from "lucide-react";
 
 function SearchCountry({setIsSearching, val, setVal}) {
-  const { setCountryName, setLocationMode } = useLocation();
+  const { setCountryName, setLocationMode, setIsByTap } = useLocation();
   function handleInput(value) {
     setVal(()=> value)
     setCountryName(()=> value);
@@ -33,7 +33,10 @@ function SearchCountry({setIsSearching, val, setVal}) {
         type="text"
         value={val}
         placeholder="Search Country"
-        onChange={(e) => handleInput(e.target.value)}
+        onChange={(e) => {
+          setIsByTap(()=> false)
+          handleInput(e.target.value)
+        }}
       />
       <MapPin className="map-pin" onClick={handleClick} />
     </div>

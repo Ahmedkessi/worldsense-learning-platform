@@ -19,8 +19,6 @@ function HomePage() {
   const {error, isLoading, searchCountries} = useLocation();
   const [isSearching, setIsSearching] = useState(``)
   const [val, setVal] = useState(``)
-  console.log(searchCountries);
-  console.log(error);
 
   return (
     <>
