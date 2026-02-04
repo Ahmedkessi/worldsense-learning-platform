@@ -91,11 +91,13 @@ app.get("/api/youtube", async (req, res) => {
       return !negativeWords.some((word) => title.includes(word));
     });
 
+
     const formatted = goodVideos.map((v) => ({
       videoId: v.id.videoId,
       title: v.snippet.title,
       description: v.snippet.description,
       channel: v.snippet.channelTitle,
+      publishTime: v.snippet.publishTime,
       thumbnail: v.snippet.thumbnails?.high?.url
     }));
 
