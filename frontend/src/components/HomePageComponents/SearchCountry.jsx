@@ -33,7 +33,7 @@ function SearchCountry({setIsSearching, val, setVal}) {
       <input
         type="text"
         value={val}
-        placeholder="Search Country"
+        placeholder={isDetecting ? `Getting Your Location...`: "Search Country"}
         disabled={isDetecting}
         onChange={(e) => {
           setIsByTap(()=> false)
