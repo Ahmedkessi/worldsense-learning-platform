@@ -664,8 +664,10 @@ form .select select {
 }
 
 .vid-container p {
-    font-size: .9rem;
+    font-size: .84rem;
 }
+
+
 
 .vid-container button, .btn-show {
     border: 1px solid rgba(211, 211, 211, 0.411);
@@ -767,11 +769,10 @@ form .select select {
 .list-video {
     display: flex !important;
     justify-content: start;
-    align-items: center;
-    gap: 4px;
+    align-items: start;
+    gap: 7px;
     padding: 4px;
     border-radius: 4px;
-    position: relative;
     transition: .2s;
     border: 1px solid transparent;
 }
@@ -792,29 +793,44 @@ form .select select {
 .list-video .about-video {
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    align-items: start;
 }
 
 .list-video .channel {
-    font-size: .8rem;
+    font-size: .7rem;
     text-transform: uppercase;
-    font-weight: 700;
-    position: absolute;
+    font-weight: 200;
+    color: rgb(192, 192, 192);
     top: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.list-video .channel svg {
+    height: 14px;
+    width: 14px;
 }
 
 .list-video .title {
     font-size: .9rem;
-    color: rgb(209, 209, 209);
+    color: rgb(233, 233, 233);
     font-weight: 500;
     text-transform:lowercase;
     margin-top: 4px;
+    max-width: 270px;
 }
 
 .list-video .time {
     font-size: .7rem;
-    font-weight: 600;
-    margin: auto 0;
+    font-weight: 100;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 14px;
 }
+
+
 
 @media screen and (max-width: 673px) {
     .vid-box {
@@ -842,6 +858,10 @@ form .select select {
 
 .list-video .time {
     font-weight:500;
+}
+
+.vid-container p {
+    font-size: .8rem;
 }
 }
 

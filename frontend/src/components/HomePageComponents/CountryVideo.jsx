@@ -4,7 +4,7 @@ import { useLocation } from "../../hooks/LocationContext";
 import { fetchCountryVideo } from "./fetchCountryVideo";
 import LoadingPageSpinner from "../UI/LoadingPageSpinner";
 import Error from "../UI/Error"
-import { ArrowBigDown } from "lucide-react";
+import { ArrowBigDown, CheckCircle, CheckCircle2 } from "lucide-react";
 
 function CountryVideo() {
   const [videos, setVideos] = useState([]);
@@ -89,7 +89,7 @@ function CountryVideo() {
       <div className="vid-container">
       <h4>Travel Guides</h4>
         
-        <p>{currentVideo.title}</p>
+        <p className="vid-title">{decodeHTML(currentVideo.title)}</p>
         <iframe
           className="vid-box"
           width="800"
@@ -138,8 +138,11 @@ const isTrue = currentIndex === index;
     <li className={`list-video ${isTrue ? `current-video` : ``}`} onClick={handleClick}>
       <img src={video.thumbnail} alt={video.description} />
       <div className="about-video">
-        <p className="channel">{video?.channel}</p>
-        <p className="title">{video?.title?.slice(0,40)}...</p>
+        <p className="title">{decodeHTML(video?.title?.slice(0,80))}{video?.title?.length > 80 ? `...` : ``}</p>
+        <p className="channel">
+          <CheckCircle></CheckCircle>
+          {decodeHTML(video?.channel)}
+        </p>
         <p className="time">{video?.publishTime?.split(`T`)[0]}</p>
       </div>
     </li>
@@ -148,3 +151,10 @@ const isTrue = currentIndex === index;
 
 
 export default CountryVideo;
+
+
+function decodeHTML(text = "") {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = text;
+  return txt.value;
+}

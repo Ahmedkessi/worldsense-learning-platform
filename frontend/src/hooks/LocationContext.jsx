@@ -58,7 +58,7 @@ function LocationProvider({ children }) {
   // Getting User Loaction and lat, lng
   useEffect(
     function () {
-      locationMode === `geo` && setIsDetecting(()=> true)
+      locationMode === `geo` && Boolean(error.length) && setIsDetecting(()=> true)
       setIsLoading(true)
       navigator.geolocation.getCurrentPosition((pos) => {
         setIsDetecting(false)
