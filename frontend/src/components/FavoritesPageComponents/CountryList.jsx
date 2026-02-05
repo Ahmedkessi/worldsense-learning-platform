@@ -16,7 +16,7 @@ function CountryList({country, handleDelete}) {
   function handleInfo(e) {
     const target = e.target.className;
     if(target === `remove-btn` || target.baseVal === `lucide lucide-x`) {
-        handleDelete(country.id)       
+        handleDelete(country.id)  
     }
     else {
       navigate(`?country=${country.name }`)

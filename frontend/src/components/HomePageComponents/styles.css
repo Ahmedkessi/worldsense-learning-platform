@@ -72,18 +72,17 @@
 
 
 .searched-box {
-    border-radius: 20px;
+    border-radius: 10px;
     border: 1px solid rgb(206, 206, 206);
     max-height: 200px;
     overflow: scroll;
     transition: .2s;
-    box-shadow: 0px 0px 10px 0px rgba(0, 192, 10, 0.466);
+    box-shadow: 0px 0px 10px 0px rgba(0, 192, 10, 0.315);
     padding: 0;
-    padding-top: 102px;
-    background-color: rgb(0, 0, 0);
     padding: 30px 0;
+    background-color: rgb(0, 0, 0);
     padding-top: 80px;
-
+    margin-top: -14px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -92,6 +91,26 @@
     padding-top: 10px;
     padding-bottom: 0px; 
     
+}
+
+.c-back {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.c-back .t-map {
+    display: flex; 
+    justify-content: start;
+    align-items: center;
+    gap: 2px;
+    color: rgb(0, 162, 255);
+    font-size: .7rem;
+}
+
+.c-back .t-map svg {
+    width: 16.4px;
+    height: 16.4px;
 }
 
 .loading-box {
@@ -103,7 +122,6 @@
 }
 
 .searched-box li {
-    background-color: rgb(44, 44, 44);
     width: 100%;
     display: flex;
     justify-content: start;
@@ -111,17 +129,19 @@
     gap: 5px;
     padding: 4px 12px;
     cursor: pointer;
+    border: 1px solid rgba(85, 85, 85, 0.493);
     transition: .2s;
 }
 
 .searched-box li:hover {
-    background-color: rgb(65, 65, 65);
+    background-color: rgb(20, 20, 20);
 }
 
 .searched-box li img {
     background-color: rgb(0, 0, 0);
     height: 3rem;
     width: 3.5rem;
+    object-fit: cover;
     font-size: .7rem;
     display: flex;
     justify-content: center;
@@ -193,13 +213,12 @@
     justify-content: start;
     align-items: center;
     gap: 3px;
-    color: lime;
+    color: rgb(0, 162, 255);
 }
 
 .info .t-map svg {
     height: 17px;
     width: 17px;
-    stroke: lime;
 }
 
 .info .desc {
@@ -624,10 +643,9 @@ form .select select {
     width: 100%;
     border-radius: .4rem;
     padding: 4px;
-    margin-bottom: 17px;
     margin-top: 100px;
-    overflow: scroll;
     font-family: 'Inter', sans-serif;
+    position: relative;
 }
 
 .vid-box {
@@ -668,20 +686,22 @@ form .select select {
 
 .vid-container .result-pages {
     margin: 0;
-    margin-top: 8px;
+    margin-top: 0px;
+    position: absolute;
+    bottom: 0px;
 }
 
 .vid-container .btns {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 18px;
 }
 
 .btn-show {
     margin-top: 30px;
     padding: 14px 20px;
     border-radius: 100px !important;
-    box-shadow: 0 0 21px 1px rgb(132, 0, 255);
     transition: .4s all;
     animation: anm 1s linear infinite;
     scale: .97;
@@ -718,7 +738,6 @@ form .select select {
     padding: 0 10px;
     border-radius: 8px;
     padding-top: 20px;
-    margin-top: -34px;
     position: relative;
 }
 
@@ -746,7 +765,7 @@ form .select select {
 }
 
 .list-video {
-    display: flex;
+    display: flex !important;
     justify-content: start;
     align-items: center;
     gap: 4px;
@@ -757,7 +776,7 @@ form .select select {
     border: 1px solid transparent;
 }
 
-.list-video:hover {
+.list-video:hover, .current-video {
     border: 1px solid grey;
     background-color: black;
 }
@@ -835,7 +854,7 @@ form .select select {
         padding: 2px 2px;
         padding-top: 12px;
         border-width: 1px;
-        margin-top: 10px;
+        background-color: rebeccapurple;
     }
 
     .list-video img {

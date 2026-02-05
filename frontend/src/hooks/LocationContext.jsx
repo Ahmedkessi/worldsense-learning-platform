@@ -58,7 +58,7 @@ function LocationProvider({ children }) {
   // Getting User Loaction and lat, lng
   useEffect(
     function () {
-      setIsDetecting(true)
+      locationMode === `geo` && setIsDetecting(()=> true)
       setIsLoading(true)
       navigator.geolocation.getCurrentPosition((pos) => {
         setIsDetecting(false)
@@ -88,13 +88,11 @@ function LocationProvider({ children }) {
       async function fetchCountry() {
         try {
           setError(``);
-          //if(location.length !== 2) throw new Error("Reverse geocoding failed");;
+          if(location.length !== 2 && !isLoading) throw new Error("Reverse geocoding failed");;
           const res = await fetch(
             `https://secure.geonames.org/countrySubdivisionJSON?lat=${location?.at(0)}&lng=${location?.at(1)}&username=ahmedkessi`
           );
-          if (!res.ok) {
-            throw new Error("Reverse geocoding failed");
-          }
+          if (!res.ok) throw new Error("Reverse geocoding failed");
           
           
           const data = await res.json();
@@ -152,6 +150,7 @@ useEffect(
           setCountry(matchedCountry);
           setlocated(matchedCountry.latlng);
           setIsLoading(false);
+          console.log(matchedCountry);
         } else {
           // No exact match found, fallback: pick the first one
           setError(`No exact match found for "${countryName}".`);
@@ -187,6 +186,8 @@ useEffect(
           const res = await fetch(
             `https://en.wikipedia.org/api/rest_v1/page/summary/${country?.name?.common}`
           );
+          if(!res.ok) throw new Error(`Something went wrong...`)
+
           const data = await res.json();
           setCountryDescription(data.extract);
           setIsLoading(false);
@@ -221,7 +222,7 @@ useEffect(
           setIsLoading(false);
         } catch (err) {
           setWeatherError(err.message);
-        
+          
         }
       }
 

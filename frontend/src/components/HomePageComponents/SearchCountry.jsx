@@ -5,7 +5,6 @@ import { MapPin, SearchIcon } from "lucide-react";
 function SearchCountry({setIsSearching, val, setVal}) {
   const { setCountryName, setLocationMode, setIsByTap, isDetecting } = useLocation();
   function handleInput(value) {
-    console.log(value.trim().length);
     if(value.trim().length > 0) {
       setLocationMode(()=> `search`);
     }

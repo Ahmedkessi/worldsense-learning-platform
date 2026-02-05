@@ -114,6 +114,18 @@ const QuizSlice = createSlice({
             const updatedFav = fav.map(c => c.id === action.payload.id ? { ...c, status: "learned", accuracy: action.payload.accuracy, score: action.payload.score } : c );
             state.favouriteCountries = updatedFav;
             state.lessonQuizCompleted = state.lessonQuizCompleted + 1;
+            state.notifications.push({
+                  type: "master country",
+                  message: "🔥 You mastered new country. +10 XP",
+                  createdAt: Date.now(),
+                  read: false,
+               });
+
+            const XP_PER_LEVEL = 100;
+            state.progress.xp = state.progress.xp + action.payload;
+            const levelUp = state?.progress?.xp >= (state?.progress?.level * XP_PER_LEVEL);
+            
+            levelUp && state.progress.level++
          }
       },
 
@@ -218,10 +230,10 @@ const QuizSlice = createSlice({
 
       learn(state, action) {
             const XP_PER_LEVEL = 100;
-            const levelUp = state?.progress?.xp >= state?.progress?.level * XP_PER_LEVEL;
+            state.progress.xp = state.progress.xp + action.payload;
+            const levelUp = state?.progress?.xp >= (state?.progress?.level * XP_PER_LEVEL);
             
             levelUp && state.progress.level++
-            state.progress.xp = state.progress.xp + action.payload;
 
             state.notifications.push({
                   type: "master country",

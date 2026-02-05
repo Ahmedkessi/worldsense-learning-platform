@@ -1,4 +1,4 @@
-import { Loader } from "lucide-react";
+import { Loader, MapPin } from "lucide-react";
 import { useLocation } from "../../hooks/LocationContext";
 import "./styles.css";
 
@@ -25,8 +25,8 @@ export default SearchedBox;
 
 function ResultList({setCountryName, country, setVal,setIsSearching, setLocationMode, setIsLoading}) {
     function handleClick() {
-        setLocationMode(()=> `search`);
         setIsLoading(()=> true)
+        setLocationMode(()=> `search`);
         setVal(``)
         setCountryName(country?.name?.common)
         setIsSearching(``)
@@ -37,7 +37,10 @@ function ResultList({setCountryName, country, setVal,setIsSearching, setLocation
         <>
             <li onClick={handleClick}>
                 <img src={country?.flags?.png || `#`} alt={country?.name?.common} />
-                <p>{country?.name?.common}</p>
+                <div className="c-back">
+                    <p className="t-name">{country?.name?.common}</p>
+                    <p className="t-map"><MapPin /> {country?.continents[0] || ``}</p>
+                </div>
             </li>
         </>
     )

@@ -9,9 +9,9 @@ import { ArrowBigDown } from "lucide-react";
 function CountryVideo() {
   const [videos, setVideos] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { country, isLoading } = useLocation();
   const [error, setError] = useState("");
   const [showVideo, setShowVideo] = useState(false);
+  const { country, isLoading } = useLocation();
   const countryName = country?.name?.common;
 
   // Reset showVideo and videos whenever country changes
@@ -63,7 +63,7 @@ function CountryVideo() {
     setError(`No videos available for this country.`)
     return;
   }
-
+  
   const nextVideo = () => {
     if (currentIndex + 1 < videos.length) {
       setError("");
@@ -83,7 +83,6 @@ function CountryVideo() {
   };
 
 
-  console.log(videos);
 
   return (
     <>    
@@ -120,20 +119,23 @@ function CountryVideo() {
         <div className="scroll-btn">
           <ArrowBigDown></ArrowBigDown>
         </div>
-        {videos.map(vid=> <AllVideos video={vid} key={vid.videoId} vids={videos} setCurrentIndex={setCurrentIndex} />)}
+        {videos.map((vid, i)=> <AllVideos index={i} currentIndex={currentIndex} video={vid} key={vid.videoId} vids={videos} setCurrentIndex={setCurrentIndex} />)}
       </div>
     </>
   );
 }
 
 
-function AllVideos({video, vids, setCurrentIndex}) {
+function AllVideos({video, vids, setCurrentIndex, index, currentIndex}) {
+const isTrue = currentIndex === index;
+
   function handleClick() {
     setCurrentIndex(()=> vids.findIndex(v => v.videoId === video.videoId))
   }
   
+  
   return(
-    <li className="list-video" onClick={handleClick}>
+    <li className={`list-video ${isTrue ? `current-video` : ``}`} onClick={handleClick}>
       <img src={video.thumbnail} alt={video.description} />
       <div className="about-video">
         <p className="channel">{video?.channel}</p>
