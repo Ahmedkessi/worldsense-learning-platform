@@ -94,7 +94,7 @@ function signup(username, password, avatar) {
       password.trim().split(` `).join(``),
       avatarImg
     );
-    navigate(`/Quiz`);
+    navigate(`/`);
   }
 
   function handleUploadAvatar() {

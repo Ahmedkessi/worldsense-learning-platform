@@ -85,7 +85,7 @@ function CountryVideo() {
 
 
   return (
-    <>    
+    <div className="vid-flex">    
       <div className="vid-container">
       <h4>Travel Guides</h4>
         
@@ -108,26 +108,33 @@ function CountryVideo() {
             </div>
             {error && <p className="err">{error}</p>}
             <br />
-            <p className="result-pages">
-              Showing video {currentIndex + 1} of {videos.length}
-            </p>
+            
           </div>
         )}
       </div>
 
-      <div className="videos">
-        <div className="scroll-btn">
-          <ArrowBigDown></ArrowBigDown>
-        </div>
-        {videos.map((vid, i)=> <AllVideos index={i} currentIndex={currentIndex} video={vid} key={vid.videoId} vids={videos} setCurrentIndex={setCurrentIndex} />)}
+      <div className="v">
+        <p className="result-pages">
+                Showing video {currentIndex + 1} of {videos.length}
+        </p>
+        <div className="videos">
+          <div className="scroll-btn">
+            <ArrowBigDown></ArrowBigDown>
+          </div>
+           {videos.map((vid, i)=> <AllVideos index={i} currentIndex={currentIndex} video={vid} key={vid.videoId} vids={videos} setCurrentIndex={setCurrentIndex} />)}
       </div>
-    </>
+      </div>
+    </div>
   );
 }
 
 
 function AllVideos({video, vids, setCurrentIndex, index, currentIndex}) {
 const isTrue = currentIndex === index;
+console.log(`2222`);
+const width = window.innerWidth;
+const slice = width > 397 ? 80 : 48;
+console.log(slice);
 
   function handleClick() {
     setCurrentIndex(()=> vids.findIndex(v => v.videoId === video.videoId))
@@ -138,7 +145,7 @@ const isTrue = currentIndex === index;
     <li className={`list-video ${isTrue ? `current-video` : ``}`} onClick={handleClick}>
       <img src={video.thumbnail} alt={video.description} />
       <div className="about-video">
-        <p className="title">{decodeHTML(video?.title?.slice(0,80))}{video?.title?.length > 80 ? `...` : ``}</p>
+        <p className="title">{decodeHTML(video?.title?.slice(0,slice))}{video?.title?.length > slice ? `...` : ``}</p>
         <p className="channel">
           <CheckCircle></CheckCircle>
           {decodeHTML(video?.channel)}

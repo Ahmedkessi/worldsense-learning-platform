@@ -14,7 +14,6 @@ function QuizLogin() {
   const [error, setError] = useState(``)
   const navigate = useNavigate();
   const [back, setBack] = useState(false)
-  const [canGo, setCanGo] = useState(false)
 
   function capitalize(string) {
   return string.trim().toLocaleLowerCase().split(` `).map(word => word[0].toUpperCase() + word.slice(1)).join(` `)
@@ -24,18 +23,18 @@ function QuizLogin() {
   function login(username, password) {
     const user = loadUserFromStorage(username);
     if (!user || user === `null`) {
-      setError("User not found");
+      setError(()=> "User not found");
       return;
     }
   
     if (user.profile.password !== password) {
-      setError("Wrong password");
+      setError(()=> "Wrong password");
       return;
     }
   
     localStorage.setItem("WorldWise_currentUser", username);
     store.dispatch(loadUser(user))
-    setCanGo(true)
+    return `login`
   }
 
 
@@ -48,17 +47,18 @@ function QuizLogin() {
     }
 
     if(!username || !password) {
-      setError(`please fill this form...`);
+      setError(()=> `please fill this form...`);
       return;
     }
     
-    login(capitalize(username), password.trim().split(` `).join(``))
-    canGo && navigate(`/`)
+    const log = login(capitalize(username), password.trim().split(` `).join(``))
+    log && navigate(`/`)
   }
 
+  
 
   function handleBack() {
-    setBack(true)
+    setBack(()=> true)
   }
 
 

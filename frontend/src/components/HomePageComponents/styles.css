@@ -637,13 +637,20 @@ form .select select {
 
 
 
+.vid-flex {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 100px;
+    gap: 8px;
+}
+
 
 .vid-container {
     max-width: 800px;
     width: 100%;
     border-radius: .4rem;
     padding: 4px;
-    margin-top: 100px;
     font-family: 'Inter', sans-serif;
     position: relative;
 }
@@ -656,14 +663,14 @@ form .select select {
     object-fit: cover;
 }
 
-.vid-container h4 {
+.vid-flex h4 {
     font-size: 1rem;
     margin: 0;
     margin-bottom: 8px;
     border-bottom: 1px solid rgba(211, 211, 211, 0.411);
 }
 
-.vid-container p {
+.vid-flex p {
     font-size: .84rem;
 }
 
@@ -683,14 +690,11 @@ form .select select {
 .vid-container .err {
     color: red;
     margin-top: 10px;
-    margin-bottom: 4px;
+    margin-bottom: 7px;
 }
 
-.vid-container .result-pages {
-    margin: 0;
-    margin-top: 0px;
-    position: absolute;
-    bottom: 0px;
+.result-pages {
+    font-size: .94rem;
 }
 
 .vid-container .btns {
@@ -722,9 +726,8 @@ form .select select {
     }
 }
 
-
-.vid-cont {
-    position: relative;
+.v {
+    margin-top: -49px;
 }
 
 
@@ -733,6 +736,7 @@ form .select select {
     flex-direction: column;
     gap: 4px;
     max-width: 800px;
+    width: 100%;
     cursor: pointer;
     max-height: 400px;
     overflow: scroll;
@@ -743,10 +747,11 @@ form .select select {
     position: relative;
 }
 
+
 .videos .scroll-btn {
     position: sticky;
     top: 3%;
-    margin-left: 90%;
+    margin-left: 94%;
     z-index: 999;
     width: 30px;
     display: flex;
@@ -759,10 +764,10 @@ form .select select {
 @keyframes scroll {
     from{
         top: -10%;
-        box-shadow: 0 10px 4px lime;
     }
     to {
-        top: 100%;
+        top: 10%;
+        opacity: 0;
     }
 }
 
@@ -831,10 +836,96 @@ form .select select {
 }
 
 
+@media screen and (max-width: 1267px) {
+    .vid-container {
+        max-width: 700px;
+    }
+}
+
+@media screen and (max-width: 1163px) {
+    .vid-container {
+        max-width:  600px;
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    .vid-flex {
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 20px;
+    }
+
+    .vid-container {
+        max-width: 700px;
+    }
+
+    .videos {
+        min-width:  700px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .videos {
+        min-width: 670px;
+    }
+}
+
+@media screen and (max-width: 694px) {
+    .videos {
+        min-width: 630px;
+    }
+}
 
 @media screen and (max-width: 673px) {
     .vid-box {
         height: 300px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .videos {
+        min-width: 580px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .videos {
+        min-width: 520px;
+    }
+}
+
+@media screen and (max-width: 545px) {
+    .videos {
+        min-width: 500px;
+    }
+}
+
+
+@media screen and (max-width: 520px) {
+    .videos {
+        min-width: 400px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .videos {
+        min-width: 300px;
+    }
+
+    .result-pages {
+        font-size: .8rem;
+        margin-bottom: 3px;
+    }
+
+    .list-video .time {
+        margin-top: 9px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .videos {
+        min-width: 100px;
     }
 }
 
@@ -877,6 +968,18 @@ form .select select {
 
     .list-video img {
         width: 120px;
+    }
+}
+
+@media screen and (max-width: 380px) { 
+    .list-video .channel {
+        font-size: .6rem;
+    }
+}
+
+@media screen and (max-width: 344px) { 
+    .list-video .channel {
+        font-size: .5rem;
     }
 }
 
