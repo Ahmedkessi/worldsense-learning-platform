@@ -8,7 +8,7 @@ import { MapPin } from "lucide-react";
 
 function CountryInfo() {
   const { country, countryDescription, isLoading, error } = useLocation();
-
+  console.log(country, error, isLoading);
   return (
     <div className="country-info">
       <h4>Country Information 📜</h4>

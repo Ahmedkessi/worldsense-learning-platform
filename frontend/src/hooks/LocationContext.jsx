@@ -59,21 +59,20 @@ function LocationProvider({ children }) {
   useEffect(
     function () {
       setError(``)
-      setIsLoading(true)
+      setIsLoading(true)      
       locationMode === `geo` && Boolean(!error.length) && setIsDetecting(()=> true);
-
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
         setIsDetecting(false)
         if (locationMode !== `geo`) return;
         setLocation(()=> [position.coords.latitude, position.coords.longitude]);
       }, (error) => {
-         setError("We couldn't find your location. Please check your browser settings or search for your city manually. 🔍");
-         setIsDetecting(false)
+          setError("We couldn't find your location. Please check your browser settings or search for your city manually. 🔍");
+           setIsDetecting(false)
       });
       } else {
-        setError("Geolocation is not supported by this browser.");
-        setIsDetecting(false)
+          setError("Geolocation is not supported by this browser.");
+          setIsDetecting(false)
       }
     },
     [locationMode]
@@ -97,6 +96,7 @@ function LocationProvider({ children }) {
     function () {
       async function fetchCountry() {
         try {
+          setIsLoading(true)
           setError(``);
           if(location.length !== 2 && !isLoading) throw new Error("Reverse geocoding failed");;
           const res = await fetch(
@@ -109,7 +109,8 @@ function LocationProvider({ children }) {
             setCountry(()=> []);
             throw new Error(`invalid lat/lng. Search country mannually`);
           }
-          setCountryName(() => data.countryName);
+          setCountryName(() => data?.countryName);
+          setError(``)
         
           
           
@@ -135,8 +136,7 @@ useEffect(
     async function fetchCountry() {
       try {
         setIsLoading(true);
-        if (!countryName || countryName.length === 0) throw new Error("We couldn't find your location. Please check your browser settings or search for your country manually. 🔍");
-        if(isByTap) return;
+        if ((!countryName || countryName.length === 0))  return ;
 
         const res = await fetch(
           `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
@@ -162,7 +162,7 @@ useEffect(
           setCountry(matchedCountry);
           setlocated(matchedCountry.latlng);
           setIsLoading(false);
-          
+
         } else {
           // No exact match found, fallback: pick the first one
           setError(`No exact match found for "${countryName}".`);
