@@ -58,8 +58,9 @@ function LocationProvider({ children }) {
   // Getting User Loaction and lat, lng
   useEffect(
     function () {
-      locationMode === `geo` && Boolean(error.length) && setIsDetecting(()=> true)
+      setError(``)
       setIsLoading(true)
+      locationMode === `geo` && Boolean(!error.length) && setIsDetecting(()=> true);
       navigator.geolocation.getCurrentPosition((pos) => {
         setIsDetecting(false)
         if (locationMode !== `geo`) return;
@@ -88,12 +89,14 @@ function LocationProvider({ children }) {
       async function fetchCountry() {
         try {
           setError(``);
+          console.log(`worrr1`);
           if(location.length !== 2 && !isLoading) throw new Error("Reverse geocoding failed");;
+          console.log(`worrr2`);
           const res = await fetch(
             `https://secure.geonames.org/countrySubdivisionJSON?lat=${location?.at(0)}&lng=${location?.at(1)}&username=ahmedkessi`
           );
           if (!res.ok) throw new Error("Reverse geocoding failed");
-          
+          console.log(`worrr3`);
           
           const data = await res.json();
           if(Boolean(data?.status) && data?.status?.message !== `error parsing parameter`) {
@@ -101,10 +104,14 @@ function LocationProvider({ children }) {
             throw new Error(`invalid lat/lng. Search country mannually`);
           }
           setCountryName(() => data.countryName);
+          console.log(data, `is it endddd`);
+        
           
           
         } catch (err) {
           setError(err.message);
+          setCountryName(``)
+          console.log(`blocked`);
           setWeatherError(err.message);
         }
       }
@@ -121,10 +128,15 @@ function LocationProvider({ children }) {
 // Fetching full data country with countryName
 useEffect(
   function () {
+    console.log(1111111);
     async function fetchCountry() {
       try {
+        console.log(`whattttt`);
         setIsLoading(true);
+        console.log(`l1`);
+        console.log(countryName, isByTap);
         if (!countryName || countryName.length === 0 || isByTap) return;
+        console.log(`l2`);
 
         const res = await fetch(
           `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
@@ -135,6 +147,7 @@ useEffect(
 
         const data = await res.json();
         setSearchCountries(data)
+        console.log(data, `22222`);
 
         // Find the country object whose name.common matches exactly (case-insensitive)
         const matchedCountry = data.find(

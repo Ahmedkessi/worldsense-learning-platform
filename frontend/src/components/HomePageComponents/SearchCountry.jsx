@@ -4,6 +4,7 @@ import { MapPin, SearchIcon } from "lucide-react";
 
 function SearchCountry({setIsSearching, val, setVal}) {
   const { setCountryName, setLocationMode, setIsByTap, isDetecting, error } = useLocation();
+  console.log(error.toLowerCase());
   function handleInput(value) {
     if(value.trim().length > 0) {
       setLocationMode(()=> `search`);
@@ -19,7 +20,6 @@ function SearchCountry({setIsSearching, val, setVal}) {
     setVal(``)
     setIsSearching(``)
   }
-console.log(error);
 
   return (
     <form onSubmit={(e)=> {
@@ -33,8 +33,8 @@ console.log(error);
       <input
         type="text"
         value={val}
-        placeholder={isDetecting && !error.length > 0 ? `Getting Your Location...`: "Search Country"}
-        disabled={isDetecting && !error.length > 0}
+        placeholder={isDetecting ? `Detecting your location...`: "Search Country"}
+        disabled={isDetecting}
         onChange={(e) => {
           setIsByTap(()=> false)
           handleInput(e.target.value)

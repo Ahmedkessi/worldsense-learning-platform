@@ -583,7 +583,7 @@
     color: rgb(254, 255, 220);
     font-weight: 500;
     width: 100%;
-    gap: 3px;
+    gap: 4.5px;
     padding: 2px 8px;
     border-radius: 4px;
     border: 1px solid gold;
@@ -611,6 +611,13 @@
 .note-lists li .note-name {
     font-size: .9rem;
     font-weight: 400;
+}
+
+@media screen and (max-width: 350px) {
+    .note-lists li .note-name {
+        max-width: 159px;
+        text-align: center;
+    }
 }
 
 

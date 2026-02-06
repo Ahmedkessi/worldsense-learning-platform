@@ -27,9 +27,9 @@ function Map() {
 
       <MapClick
         onClick={({ lat, lng }) => {
-        setlocated([lat, lng]);
-        setMapLocation([lat, lng])
-        setLocationMode(()=> `search`)
+          setLocationMode(()=> `search`)
+          setlocated([lat, lng]);
+          setMapLocation([lat, lng])
         }}
       />
 

@@ -122,7 +122,7 @@ const QuizSlice = createSlice({
                });
 
             const XP_PER_LEVEL = 100;
-            state.progress.xp = state.progress.xp + action.payload;
+            state.progress.xp = state.progress.xp + 10;
             const levelUp = state?.progress?.xp >= (state?.progress?.level * XP_PER_LEVEL);
             
             levelUp && state.progress.level++
