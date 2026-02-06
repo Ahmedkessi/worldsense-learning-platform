@@ -61,11 +61,20 @@ function LocationProvider({ children }) {
       setError(``)
       setIsLoading(true)
       locationMode === `geo` && Boolean(!error.length) && setIsDetecting(()=> true);
-      navigator.geolocation.getCurrentPosition((pos) => {
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
         setIsDetecting(false)
         if (locationMode !== `geo`) return;
-        setLocation(()=> [pos.coords.latitude, pos.coords.longitude]);
+        setLocation(()=> [position.coords.latitude, position.coords.longitude]);
+      }, (error) => {
+         setError("We couldn't find your location. Please check your browser settings or search for your city manually. 🔍");
+         setIsDetecting(false)
       });
+      } else {
+        setError("Geolocation is not supported by this browser.");
+        setIsDetecting(false)
+      }
     },
     [locationMode]
   );
@@ -89,14 +98,11 @@ function LocationProvider({ children }) {
       async function fetchCountry() {
         try {
           setError(``);
-          console.log(`worrr1`);
           if(location.length !== 2 && !isLoading) throw new Error("Reverse geocoding failed");;
-          console.log(`worrr2`);
           const res = await fetch(
             `https://secure.geonames.org/countrySubdivisionJSON?lat=${location?.at(0)}&lng=${location?.at(1)}&username=ahmedkessi`
           );
           if (!res.ok) throw new Error("Reverse geocoding failed");
-          console.log(`worrr3`);
           
           const data = await res.json();
           if(Boolean(data?.status) && data?.status?.message !== `error parsing parameter`) {
@@ -104,14 +110,12 @@ function LocationProvider({ children }) {
             throw new Error(`invalid lat/lng. Search country mannually`);
           }
           setCountryName(() => data.countryName);
-          console.log(data, `is it endddd`);
         
           
           
         } catch (err) {
           setError(err.message);
           setCountryName(``)
-          console.log(`blocked`);
           setWeatherError(err.message);
         }
       }
@@ -128,15 +132,11 @@ function LocationProvider({ children }) {
 // Fetching full data country with countryName
 useEffect(
   function () {
-    console.log(1111111);
     async function fetchCountry() {
       try {
-        console.log(`whattttt`);
         setIsLoading(true);
-        console.log(`l1`);
-        console.log(countryName, isByTap);
-        if (!countryName || countryName.length === 0 || isByTap) return;
-        console.log(`l2`);
+        if (!countryName || countryName.length === 0) throw new Error("We couldn't find your location. Please check your browser settings or search for your country manually. 🔍");
+        if(isByTap) return;
 
         const res = await fetch(
           `https://restcountries.com/v3.1/name/${countryName.toLowerCase()}`
@@ -147,7 +147,6 @@ useEffect(
 
         const data = await res.json();
         setSearchCountries(data)
-        console.log(data, `22222`);
 
         // Find the country object whose name.common matches exactly (case-insensitive)
         const matchedCountry = data.find(
@@ -163,7 +162,7 @@ useEffect(
           setCountry(matchedCountry);
           setlocated(matchedCountry.latlng);
           setIsLoading(false);
-          console.log(matchedCountry);
+          
         } else {
           // No exact match found, fallback: pick the first one
           setError(`No exact match found for "${countryName}".`);
@@ -176,6 +175,7 @@ useEffect(
         setError(err.message);
         setWeatherError(err.message);
         setIsLoading(false);
+        setIsDetecting(false)
       }
     }
 

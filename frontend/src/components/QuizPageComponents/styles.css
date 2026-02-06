@@ -613,7 +613,7 @@
     font-weight: 400;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 390px) {
     .note-lists li .note-name {
         max-width: 159px;
         text-align: center;
