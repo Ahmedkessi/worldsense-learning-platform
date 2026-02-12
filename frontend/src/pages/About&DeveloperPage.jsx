@@ -2,7 +2,7 @@ import "./styles.css";
 import DeveloperImage from "../assets/DeveloperImage.jpg";
 import { useState } from "react";
 import AppNavigation from "../components/UI/AppNavigation";
-import { Youtube, Facebook, MessageSquareMore } from "lucide-react";
+import { Youtube, Facebook, Mails } from "lucide-react";
 
 function About_Developer() {
   const [isOpen, setIsOpen] = useState(false);
