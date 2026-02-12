@@ -22,7 +22,7 @@ function StarRating({
   }
 
   return (
-    <div>
+    <div className="flex">
       {Array.from({ length: maxRating }, (_, i) => (
         <Star
           full={tempRating >= 0 ? tempRating >= i : rating >= i}

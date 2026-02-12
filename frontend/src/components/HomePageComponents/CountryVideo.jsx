@@ -5,6 +5,7 @@ import { fetchCountryVideo } from "./fetchCountryVideo";
 import LoadingPageSpinner from "../UI/LoadingPageSpinner";
 import Error from "../UI/Error"
 import { ArrowBigDown, CheckCircle, CheckCircle2 } from "lucide-react";
+import Button from "../UI/Button";
 
 function CountryVideo() {
   const [videos, setVideos] = useState([]);
@@ -103,8 +104,8 @@ function CountryVideo() {
         {videos.length > 1 && (
           <div style={{ marginTop: "10px" }}>
             <div className="btns">
-              <button onClick={prevVideo}>⏮️ Previous video</button>
-              <button onClick={nextVideo}>Next video ⏭️</button>
+              <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100" handleClick={prevVideo}>⏮️ Previous video</Button>
+              <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100" handleClick={nextVideo}>Next video ⏭️</Button>
             </div>
             {error && <p className="err">{error}</p>}
             <br />
@@ -131,15 +132,12 @@ function CountryVideo() {
 
 function AllVideos({video, vids, setCurrentIndex, index, currentIndex}) {
 const isTrue = currentIndex === index;
-console.log(`2222`);
 const width = window.innerWidth;
 const slice = width > 397 ? 80 : 48;
-console.log(slice);
 
   function handleClick() {
     setCurrentIndex(()=> vids.findIndex(v => v.videoId === video.videoId))
   }
-  
   
   return(
     <li className={`list-video ${isTrue ? `current-video` : ``}`} onClick={handleClick}>

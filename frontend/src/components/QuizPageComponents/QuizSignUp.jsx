@@ -7,6 +7,10 @@ import { loadUser } from "../../features/QuizSlice";
 import store from "../../store/store";
 import UploadAvatar from "./UploadAvatar";
 import { useSelector } from "react-redux";
+import { GlowButton } from "../../pages/Landing/components/GlowButton";
+
+
+const nums = [`1`,`2`, `3`,`4`, `5`, `6`, `7`, `8`, `9`, `0`]
 
 function QuizSignUp() {
   const [username, setUsername] = useState(``);
@@ -89,6 +93,13 @@ function signup(username, password, avatar) {
       return;
     }
 
+    const strNums = nums.filter(n => username.split(``).includes(n))
+    if(strNums.length > 0 ) {
+      setError(`no number allowed in username!!`)
+      return;
+    }
+
+
     signup(
       capitalize(username),
       password.trim().split(` `).join(``),
@@ -159,19 +170,19 @@ function signup(username, password, avatar) {
 
             {error.length > 0 ? (
               <div className="err">
-                <Error type={`small`} msg={error}></Error>
+                <p>{error}</p>
               </div>
             )  : ``}
 
             <div className="btns">
-              <Button handleClick={handleBack}>Back</Button>
-              <Button>Sign in</Button>
+              <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100" handleClick={handleBack}>Back</Button>
+              <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Sign up</Button>
             </div>
           </form>
 
           <br />
           <p className="footer">
-            Already have an account? <Link to={`/Login`}>Log in</Link>{" "}
+            Already have an account? <Link to={`/Login`} className="text-cyan-400 text-sm">Log in</Link>{" "}
             and join the fun!
           </p>
         </div>

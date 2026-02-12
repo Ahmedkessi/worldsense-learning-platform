@@ -552,7 +552,13 @@ form .select {
 
 form .select select {
     height: 18px;
+    border-color: rgb(124, 124, 124);
     font-size: 0.8rem;
+    cursor: pointer;
+}
+
+form .select select:focus {
+    outline: none;
 }
 
 .rate {
@@ -720,6 +726,7 @@ form .select select {
 @keyframes anm {
     from {
         scale: .9;
+        box-shadow: 0 0 12px rgb(197, 1, 223);
     }
     to {
         scale: 1;

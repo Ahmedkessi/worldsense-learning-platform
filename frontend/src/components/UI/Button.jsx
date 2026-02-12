@@ -4,9 +4,10 @@ function Button({
   children = `Button`,
   handleClick = null,
   className = `primary`,
+  newStyle = ``,
 }) {
   return (
-    <button className={`button ${className}`} onClick={handleClick}>
+    <button className={`${newStyle.length > 0 ? newStyle + `p-52`: `button ${className}` }`} onClick={handleClick}>
       {children}
     </button>
   );

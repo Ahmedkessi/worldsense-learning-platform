@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { quizCompleted, addToLearned } from "../../../features/QuizSlice";
 import { useNavigate } from "react-router-dom";
 import { useFavourites } from "../../../hooks/FavoritesContext";
+import Button from "../../UI/Button";
 
 
 function ResultQuiz({ dispatch, points, questions, correctAnswers, wrongAnswers }) {
@@ -87,8 +88,8 @@ function ResultQuiz({ dispatch, points, questions, correctAnswers, wrongAnswers 
 
 
                 <div className="btns">
-                    <button onClick={handleRetry}>Rety</button>
-                    <button onClick={handleClose}>Exit</button>
+                    <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100" handleClick={handleRetry}>Rety</Button>
+                    <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100" handleClick={handleClose}>Exit</Button>
                 </div>
 
 

@@ -2,6 +2,10 @@
 @import "leaflet/dist/leaflet.css";
 @import "https://unpkg.com/leaflet@1.9.3/dist/leaflet.css";
 
+@import "tailwindcss";
+
+/*
+*/
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -20,50 +24,13 @@
 
 
 
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-
-h1 {
-  font-size: 1.4em;
-  line-height: 1.1;
-  margin-bottom: 4.9px;
-}
 
 ::-webkit-scrollbar {
   width: 0;
 }
 
-button {
-  border-radius: 3px !important;
-  border: 1px solid rgb(82, 58, 216);
-  padding: 0.2em 1.3em;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #930eff;
-}
-button:focus,
-button:focus-visible {
-  outline:none;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -100,3 +67,57 @@ body {
         rotate: 370deg;
     }
 }
+
+button {
+  cursor: pointer;
+}
+
+button:focus,
+button:focus-visible {
+  outline:none;
+}
+
+
+/*
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+
+h1 {
+  font-size: 1.4em;
+  line-height: 1.1;
+  margin-bottom: 4.9px;
+}
+
+button {
+  border-radius: 3px !important;
+  border: 1px solid rgb(82, 58, 216);
+  padding: 0.2em 1.3em;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #930eff;
+}
+button:focus,
+button:focus-visible {
+  outline:none;
+}
+  */
+

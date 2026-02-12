@@ -11,7 +11,7 @@ function QuizNav() {
 
   return (
     <div className='quiz-nav'>
-        <Link className="link" to={`/Quiz/Profile`}>
+        <Link className="link" to={`/Profile`}>
             <div className="div">
                 <img src={avatar} alt="user_logo" />
             </div>

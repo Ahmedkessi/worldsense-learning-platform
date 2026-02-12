@@ -71,8 +71,8 @@ function UpdateProfile() {
                   value={password}  onChange={(e)=> setPassword(e.target.value)} />
 
                 <div className="btns">
-                  <Button handleClick={handleBack}>Back</Button>
-                 <Button>Save</Button>
+                  <Button handleClick={handleBack} newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Back</Button>
+                 <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Save</Button>
                 </div>
               </form>
           </div>

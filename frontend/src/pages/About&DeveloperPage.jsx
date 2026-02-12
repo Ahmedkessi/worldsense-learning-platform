@@ -76,7 +76,7 @@ function DeveloperInfo({ setIsOpen, setMessage, setBtnMessage }) {
 
           <div className="links">
             <div className="icon" onClick={handleWhatsAppClick}>
-              <MessageSquareMore size={20} />
+              <Mails size={20} />
             </div>
 
             <div className="icon" onClick={handleFacebookClick}>

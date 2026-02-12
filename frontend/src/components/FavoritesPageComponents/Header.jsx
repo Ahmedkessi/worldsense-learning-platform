@@ -34,7 +34,7 @@ function Header({setFilter, setSort, filter,
 
   return(
     <div className="headFav">
-        <input type="text" placeholder="Search country name..." value={search} onChange={(e)=> setSearch(e.target.value)}/>
+        <input className="text-sm" type="text" placeholder="Search country name..." value={search} onChange={(e)=> setSearch(e.target.value)}/>
 
         <div className="selectBox">
           <div>

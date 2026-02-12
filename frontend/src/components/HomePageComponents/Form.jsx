@@ -88,7 +88,7 @@ function Form() {
       <div className="form-que">
         <div className="select">
           <label htmlFor="visited">Have you ever visited {country?.name?.common}?</label>
-          <select name="visited" value={visited} onChange={(e)=> setVisited(e.target.value)}>
+          <select className="bg-black border" name="visited" value={visited} onChange={(e)=> setVisited(e.target.value)}>
             <option value={`choose`} hidden>choose</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
@@ -99,7 +99,7 @@ function Form() {
           <label htmlFor="Want to visit">
             Would you like to visit {country?.name?.common} in the future?
           </label>
-          <select name="Want to visit" value={hopeToVisit} onChange={(e)=> setHopeToVisit(e.target.value)}>
+          <select className="bg-black border" name="Want to visit" value={hopeToVisit} onChange={(e)=> setHopeToVisit(e.target.value)}>
             <option value={`choose`} hidden>choose</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
@@ -120,8 +120,8 @@ function Form() {
       </div>
 
       <div className="btns">
-        <Button>Close</Button>
-        <Button>Save</Button>
+        <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Close</Button>
+        <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Save</Button>
       </div>
     </form>
   );

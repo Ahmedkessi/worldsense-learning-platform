@@ -16,8 +16,8 @@ function NavTabs({ setIsOpen }) {
         <li>Quiz</li>
       </NavLink>
 
-      <NavLink to="/About&Developer" onClick={() => setIsOpen(false)}>
-        <li>About & Developer</li>
+      <NavLink to="/Profile" onClick={() => setIsOpen(false)}>
+        <li>Profile</li>
       </NavLink>
     </ul>
   );

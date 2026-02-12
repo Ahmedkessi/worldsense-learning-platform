@@ -86,19 +86,19 @@ function QuizLogin() {
                   value={username} onChange={(e)=> setUsername(e.target.value)}/>
                 <input type="password" placeholder="Enter Your Password" 
                   value={password} onChange={(e)=> setPassword(e.target.value)}/>
-                 {error.length > 0 ? <div className="err"><Error type={`small`} msg={error}></Error></div> : ``}
+                 {error.length > 0 ? <div className="err">{error}</div> : ``}
 
                 <div className="btns">
-                  <Button handleClick={handleBack}>Back</Button>
-                 <Button>Login</Button>
+                  <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100" handleClick={handleBack}>Back</Button>
+                 <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Login</Button>
                 </div>
               </form>
               
               
               <br />
              
-              <p className="footer">Don’t have an account yet? <Link to={`/Signup`}>Sign up</Link> and join the fun!</p>
-              <p className="footer">I forgot my password. <Link to={`/Help`}>Help</Link></p>
+              <p className="footer">Don’t have an account yet? <Link to={`/Signup`} className="text-cyan-400 text-sm">Sign up</Link> and join the fun!</p>
+              <p className="footer">I forgot my password. <Link to={`/Help`} className="text-cyan-400 text-sm">Help</Link></p>
            
           </div>
 

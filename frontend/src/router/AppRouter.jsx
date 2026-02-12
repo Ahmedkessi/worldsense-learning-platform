@@ -5,6 +5,11 @@ import Learn from "../components/QuizPageComponents/LearnComponents/Learn";
 
 
 
+import { LandingPage as L } from '../pages/Landing/pages/LandingPage';
+import { AboutPage as A } from '../pages/Landing/pages/AboutPage';
+
+
+
 const HomePage = lazy(() => import("../pages/HomePage"));
 const FavouritesPage = lazy(() => import("../pages/favouritesPage"));
 const QuizPage = lazy(() => import("../pages/QuizPage"));
@@ -33,7 +38,16 @@ function AppRouter() {
       <BrowserRouter>
         <Suspense fallback={<LoadingPageSpinner type="full" msg={`Loading...`} />}>          
           <Routes>
-            {!loggedIn && <Route index element={<Navigate replace to={`Signup`} />} />}
+
+            {!loggedIn && 
+              <>
+              <Route index element={<Navigate replace to={`/home`} />} />
+
+                <Route path="/home" element={<L />} />
+                <Route path="/about" element={<A />} />
+              </>
+            }
+
             <Route path="Signup" element={<QuizSignUp />} />
             <Route path="Login" element={<QuizLogin />} />
             <Route path="/Help" element={<HelpAccount />}/>
@@ -48,9 +62,10 @@ function AppRouter() {
               <Route path="/Quiz/UpdateProfile" element={<UpdateProfile />} />
               <Route path="/Quiz/Dashboard" element={<QuizDasboard />} />
               <Route path="/Quiz/Game" element={<QuizGame />}></Route>
-              <Route path="/Quiz/Profile" element={<QuizProfile />} />
               <Route path="/Quiz/Learn" element={<Learn />} />
             </Route>
+            
+            <Route path="/Profile" element={<QuizProfile />} />
 
             <Route path="About&Developer" element={<About_Developer />} />
             </>}
@@ -66,3 +81,4 @@ function AppRouter() {
 }
 
 export default AppRouter;
+

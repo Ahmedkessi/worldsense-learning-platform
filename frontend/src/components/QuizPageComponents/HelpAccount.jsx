@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import image from "../../assets/logo1.png";
 import "./styles.css";
+import Button from "../UI/Button";
 
 function HelpAccount() {
   const navigate = useNavigate()
@@ -41,7 +42,7 @@ const data = userData.map(data => data.profile)
       </div>
 
 
-      <button onClick={()=> navigate(`/Login`)}>Cencel</button>
+      <Button handleClick={()=> navigate(`/Login`)} newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100" onClick={()=> navigate(`/Login`)}>Cencel</Button>
 
 
     </div>
