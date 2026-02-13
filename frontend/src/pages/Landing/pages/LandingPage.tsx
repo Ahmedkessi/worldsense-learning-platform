@@ -22,14 +22,14 @@ export function LandingPage() {
             <span className="text-xl font-bold tracking-tight">WorldSense</span>
           </div>
 
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-            <Link to="/home" className="hover:text-white transition-colors">
+          <div className="md:flex items-center gap-8 text-sm font-medium text-gray-300">
+            <Link to="/home" className="hover:text-white transition-colors hidden md:inline-block">
               Explore
             </Link>
-            <a href="#features" className="hover:text-white transition-colors">
+            <a href="#features" className="hover:text-white transition-colors hidden md:inline-block">
               Features
             </a>
-            <Link to="/about" className="hover:text-white transition-colors">
+            <Link to="/about" className="hover:text-white mr-3 md:mr-0 transition-colors">
               About
             </Link>
             <Link to="/Signup">

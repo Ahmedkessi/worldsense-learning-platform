@@ -59,8 +59,13 @@ export function Footer() {
             © 2024 WorldSense. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <Github className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-            <Twitter className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+            <a href="https://github.com/Ahmedkessi" target="_blank" rel="noopener noreferrer">
+              <Github className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+            </a>
+
+            <a href="https://wa.me/252615666376" target="_blank" rel="noopener noreferrer">
+              <Twitter className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+            </a>
             <Instagram className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
           </div>
         </div>
