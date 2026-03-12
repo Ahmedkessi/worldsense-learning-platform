@@ -6,6 +6,8 @@ import NotLearned from "./NotLearned";
 import Learned from "./Learned";
 import { useSelector } from "react-redux";
 import { useFavourites } from "../../../hooks/FavoritesContext";
+import { Search, XCircle } from "lucide-react";
+import { useState } from "react";
 
 
 function Learn() {
@@ -14,7 +16,11 @@ function Learn() {
     const notLearned = countries?.filter(c => c?.status === `notLearned`)
     const learned = countries?.filter(c => c?.status === `learned`)
     const readyToLearn = countries?.filter(c => c?.status === `readyToLearn`)
+    const [searchTerm, setSearchTerm] = useState(``);
     
+    const searchLearned = learned.filter(country => country?.name.toLowerCase()?.includes(searchTerm.toLowerCase()))
+    const searchNotLearned = notLearned.filter(country => country?.name.toLowerCase()?.includes(searchTerm.toLowerCase()))
+    const searchReadyToLearned = readyToLearn.filter(country => country?.name.toLowerCase()?.includes(searchTerm.toLowerCase()))
 
 
   return (
@@ -30,10 +36,19 @@ function Learn() {
 
         <Head countries={countries} learned={learned} inprogress={readyToLearn} />
 
+        <div className="flex items-center relative mt-2 max-w-[240px]">
+            <Search className="max-h-[20px] max-w-[20px] absolute ml-2 cursor-pointer" />
+            <input value={searchTerm} className="border border-b-gray-500 outline-0 text-[0.8rem] w-full py-1 rounded-[4px] px-3 pl-9" type="text" placeholder="Search saved country..."
+            onChange={(e)=> setSearchTerm(()=> e.target.value)} />
+            {searchTerm.length > 0 && <XCircle className="max-h-[20px] max-w-[20px] absolute ml-2 right-2 cursor-pointer" 
+                                        onClick={()=> setSearchTerm(``)}/>}
+        </div>
+        
+
         <div className="learn-main">
-            <ReadyToLearn setQues={setQues} countries={readyToLearn} />
-            <NotLearned countries={notLearned} />
-            <Learned countries={learned} />
+            <ReadyToLearn setQues={setQues} countries={searchTerm.length > 0 ? searchReadyToLearned : readyToLearn} />
+            <NotLearned countries={searchTerm.length > 0 ? searchNotLearned : notLearned} />
+            <Learned countries={searchTerm.length > 0 ? searchLearned : learned} />
         </div>
     
 
