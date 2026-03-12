@@ -225,6 +225,10 @@
     min-width: 120px;
     position: relative;
     padding-bottom: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;
 }
 
 .quiz-categories .category-box .category:hover {
@@ -237,7 +241,6 @@
     padding: 2px 30px;
     padding-bottom: 4px;
     font-size: .7rem;
-    margin-top: 4px;
     border-radius: 4px;
     position: absolute;
     bottom: 4px;
@@ -251,14 +254,13 @@
     width: 44px;
     padding: 10px;
     margin: 0 auto;
-    transform: translate(70%, 5%);
     transition: .2s;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     border-bottom: 1px solid rgb(182, 176, 176);
 }
 
 .quiz-categories .category-box .category svg:hover {
-    transform: translate(70%, -3px);
+    transform: translate(0%, -4px);
 }
 
 

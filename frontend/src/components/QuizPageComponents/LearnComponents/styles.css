@@ -313,6 +313,7 @@
 
 
 
+
 .box-head {
     display: flex;
     justify-content: start;
@@ -585,12 +586,14 @@
   flex-direction: column;
 }
 
+
+
 .country-page .card h4 {
   margin-bottom: 8px;
-  font-size: .9rem;
-  font-weight: 600;
-  border-bottom: 1px solid gold;
-  border-right: 1px solid gold;
+  font-size: .8rem;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(255, 217, 0, 0.767);
+  border-right: 1px solid rgba(255, 217, 0, 0.801);
   padding-right: 4px;
   border-radius: 4px;
   color: gold;
@@ -636,6 +639,13 @@
 
 
 
+
+.country-page .card-about {
+    grid-template-columns: 1/3 !important;
+    grid-template-rows: 1/3;
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
 
 
 

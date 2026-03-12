@@ -19,6 +19,7 @@ function Form() {
   const [defaultRating, setDefaultRating] = useState(-2)
   const userFavCounries = useSelector(s => s.user.favouriteCountries)
   const [accErr, setAccErr] = useState(``)
+  const [err, setErr] = useState(``);
 
   //const prevCountries = favouriteCountries.filter((data)=> data?.name === country?.name?.common)  
   const prevCountries = userFavCounries.filter((data)=> data?.name === country?.name?.common)  
@@ -38,7 +39,10 @@ function Form() {
     const id = crypto.randomUUID().slice(0,9);
 
 
-    if(hopeToVisit === `choose` || visited === `choose` || note.length === 0) return;
+    if(hopeToVisit === `choose` || visited === `choose` || note.length === 0) {
+      setErr(`Please answer all the questions before saving!`)
+      return;
+    };
 
     const currCountry = {
       id,
@@ -113,14 +117,16 @@ function Form() {
           </div>
           {rating > 0 && <p>You Rated {country?.name?.common} {rating}/10 ⭐</p>}
         </div>
+      
 
         <div className="description">
           <textarea value={note} placeholder="What do you want to remember about this country?" onChange={(e)=> setNote(e.target.value)}></textarea>
         </div>
+        
+        {err.length > 0 && <p className="text-red-500 bg-gray-800 p-2 border-red-500 border mb-8 mt-[-14px] ml-2">{err}</p>}
       </div>
-
-      <div className="btns">
-        <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Close</Button>
+        
+      <div className="btns">   
         <Button newStyle="py-1 px-5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-[grey] text-grey-100">Save</Button>
       </div>
     </form>

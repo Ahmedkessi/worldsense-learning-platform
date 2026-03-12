@@ -56,7 +56,7 @@ function Category({data, navigate, isOpen, setIsOpen, currCateg, setCurrCateg, i
 
 
             <Icon size={20} />
-            <p>{data.name}</p> 
+            <p className="text-center">{data.name}</p> 
               {/* this was the first button i made but when i saw a friend as user used this button he clicked and thought it wont work so i changed this
               <button disabled={currCateg !== i} onClick={handlePlay}>Play</button>
               */}

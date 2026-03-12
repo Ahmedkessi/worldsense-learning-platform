@@ -692,6 +692,7 @@
 .avatar-page {
     max-width: 800px;
     position: relative;
+    margin: 20px auto;
 }
 
 
@@ -699,6 +700,11 @@
     position: absolute;
     right: 4px;
     cursor: pointer;
+    border: 2px solid rgb(0, 255, 0);
+    border-radius: 100px;
+    height: 1.8rem;
+    width: 1.8rem;
+    padding: 2px;
 }
 
 
@@ -729,6 +735,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: rgb(26, 26, 26);
+    background-color: black;
     border: 1px solid rgba(128, 128, 128, 0.753);
     border-radius: 8px;
     padding: 10px 10px; 
@@ -750,13 +757,14 @@
     width: 3rem;
     border-radius: 40px;
     font-size: .7rem;
-    outline: 2px solid rgb(223, 213, 213);
+    outline: 2px solid rgb(192, 192, 192);
     cursor: pointer;
     margin: 0 auto;
 }
 
 .avatar-box img.selected {
-    outline: 2px solid rgb(0, 255, 0);
+    outline: 3px solid rgb(0, 255, 0);
+    box-shadow: 0 0 10px 2px rgb(0, 255, 0);
 }
 
 

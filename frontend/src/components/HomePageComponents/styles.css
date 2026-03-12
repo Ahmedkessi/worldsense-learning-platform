@@ -104,7 +104,7 @@
     justify-content: start;
     align-items: center;
     gap: 2px;
-    color: rgb(0, 162, 255);
+    color: rgb(60, 255, 0);
     font-size: .7rem;
 }
 
@@ -181,16 +181,25 @@
     align-items: center;
 }
 
+.info > div:first-child {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 4px;
+}
+
 .info {
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    align-items: start;
     gap: 3px;
 }
 
 
 .info .img {
-    width: 6rem;
-    height: 4rem;
+    width: 7rem;
+    height: 5rem;
     object-fit: cover;
     border-radius: .2rem;
     border: none;
@@ -205,21 +214,27 @@
 .info .t-name {
     font-size: 1.3rem;
     font-weight: 600;
+    max-width: 200px;
+    line-height: 1.2;
 }
 
 .info .t-map {
-    font-size: .9rem;
+    font-size: .8rem;
+    margin-top: 6px;
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 3px;
-    color: rgb(0, 162, 255);
+    gap: 2px;
+    color: rgb(60, 255, 0);
+    text-transform: uppercase;
 }
 
 .info .t-map svg {
-    height: 17px;
-    width: 17px;
+    height: 16px;
+    width: 16px;
+    margin-top: -1px;
 }
+
 
 .info .desc {
     margin-top: 8px;
@@ -250,7 +265,7 @@
 
 .info-bottom .b-title {
     text-transform: uppercase;
-    font-size: .7rem;
+    font-size: .6rem;
     font-weight: 600;
     color: rgb(184, 184, 184);
 }
@@ -491,7 +506,7 @@
 }
 
 .box:hover {
-    box-shadow: 0 0 12px rgb(59, 48, 212);;
+    box-shadow: 0 0 12px rgb(59, 48, 212);
 }
 
 .box > p {
@@ -499,8 +514,7 @@
 }
 
 .today {
-    box-shadow: 0 1px 1px rgb(255, 255, 255);
-    border: 2px solid #646cff;
+    border: 2px solid #00ff0d;
     border-radius: 12px;
 }
 
@@ -1004,4 +1018,12 @@ h4 {
     margin-bottom: 10px;
     border-bottom: 1px solid grey;
     width: max-content;
+    color: lightgrey;
+}
+
+
+@media screen and (max-width: 370px) {
+    h4 {
+        font-size: .8rem;
+    }
 }

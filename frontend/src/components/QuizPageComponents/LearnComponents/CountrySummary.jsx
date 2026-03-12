@@ -39,14 +39,15 @@ function CountrySummary({currCountry, setCurrCountry}) {
       {currCountry.images.slice(0,3).map(src => <img src={src} />)}
     </section>
 
-
-    <section class="details">
-      <div class="card">
+     <div class="card card-about">
         <h4>About</h4>
         <p>
           {currCountry.countryDescription}
         </p>
       </div>
+
+    <section class="details">
+     
 
       <div class="card">
         <h4>Borders</h4>
@@ -75,7 +76,7 @@ function CountrySummary({currCountry, setCurrCountry}) {
     </section>
 
 
-    <section class="action">
+    <section class="action mb-2.5">
       <button class="quiz-btn" onClick={(()=> setCurrCountry(null))}>Close</button>
     </section>
 
