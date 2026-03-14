@@ -236,6 +236,16 @@
     position: relative;
 }
 
+.quiz .head h4 {
+    font-size: 1rem;
+    background-image: linear-gradient(to right bottom, rgb(0, 255, 213), rgb(255, 255, 255));
+    width: min-content;
+    background-clip: text;
+    font-weight: 700;
+    color: transparent;
+ 
+}
+
 .quiz .head svg {
     height: 30px;
     width: 30px;
@@ -566,7 +576,7 @@
 .note-lists {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     width: 100%;
     max-height: 400px;
     overflow: scroll;
@@ -576,7 +586,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(32, 32, 32);
+    background: #000;
     color: rgb(254, 255, 220);
     font-weight: 500;
     width: 100%;
@@ -634,20 +644,19 @@
 
 
 .note-lists li .readed {
-    font-size: .8rem;
+    font-size: .74rem;
     border: 1px solid rgb(255, 196, 0);
-    padding: 0 14px;
+    padding: 1px 14px;
     border-radius: 100px;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.295);
     transition: .2s;
-    padding-bottom: 2px;
     font-weight: 400;
     text-transform: capitalize;
 }
 
 .note-lists li .readed:hover {
-    background-color: rgb(53, 53, 53);
+    background-color: rgba(17, 216, 76, 0.37);
 }
 
 .note-page button {
@@ -656,6 +665,11 @@
     padding-bottom: 4px;
     border-radius: 4px;
     font-size: .8rem;
+    transition: all .1s linear;
+}
+
+.note-page button:hover {
+    background: rgb(126, 0, 0);
 }
 
 

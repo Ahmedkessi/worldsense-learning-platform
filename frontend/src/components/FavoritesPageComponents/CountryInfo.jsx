@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import formatPopulation from "../../utils/formatPopulation";
 import { useEffect } from "react";
+import { XSquare } from "lucide-react";
 
 
 function CountryInfo({country, url}) {
@@ -44,7 +45,7 @@ function CountryInfo({country, url}) {
      </div>
       
       <div>
-        <p className="c-i-close" onClick={handleClose}>X</p>
+        <XSquare className="absolute top-2 right-2 h-7 w-7 cursor-pointer" onClick={handleClose} />
       </div>
 
     </div>

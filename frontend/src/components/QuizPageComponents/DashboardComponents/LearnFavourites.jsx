@@ -57,7 +57,7 @@ function LearnFavourites() {
 
             <div className="learn-box-1">
                 <div className="img-cont">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3hoVd6RWDqeJ26ay1RG_K46uaWO7xAI-TPw&s" alt="" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXLXk7KWWSAK9jnb7Lod4aR2KKCM8xzegJUQ&s" alt="learn-image" />
                 </div>
                 <p className="learn-overview">Learn and quiz yourself on your favourite countries</p>
 
@@ -71,6 +71,15 @@ function LearnFavourites() {
 
 
             <div className="learn-box-2">
+
+                <div className="result-box">
+                    <p className="result incomplete">Incomplete</p>
+                    <div className="result-acheivement">
+                        <div className="icon">XP</div>
+                        <p>+30</p>
+                    </div>
+                </div>
+                
                 <div className="process">
                     <div className="progress">
                         <div style={{width: `${learnProgress?.length || 0 / 10 * 100}%`}} className="pro"></div>
@@ -78,14 +87,6 @@ function LearnFavourites() {
                     <div className="progress-info">
                         <p>Progress</p>
                         <p>{learnProgress?.length || 0}/5</p>
-                    </div>
-                </div>
-
-                <div className="result-box">
-                    <p className="result incomplete">Incomplete</p>
-                    <div className="result-acheivement">
-                        <div className="icon">XP</div>
-                        <p>+30</p>
                     </div>
                 </div>
     

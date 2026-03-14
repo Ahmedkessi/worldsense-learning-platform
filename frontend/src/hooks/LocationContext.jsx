@@ -17,7 +17,7 @@ function LocationProvider({ children }) {
   const [mapLocation, setMapLocation] = useState([])
   
   const [countryName, setCountryName] = useState(``);
-  const [locationMode, setLocationMode] = useState(`geo`)
+  const [locationMode, setLocationMode] = useState(`geom`)
   
   
   const [isLoading, setIsLoading] = useState(false);

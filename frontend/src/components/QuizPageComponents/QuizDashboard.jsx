@@ -95,7 +95,9 @@ function NotificationPage({messages, setShowMsg}) {
 
   return (
     <div className="note-page">
-      <div className="notification-box">
+     <div className="notification-box">
+      <p className="text-sm text-gray-300 mb-[-4px] border-b border-b-grey-400">🟢 Notifications ( {notification.length} )</p>
+
       <div className="note-lists">
 
         {notification?.map((msg, i) => {

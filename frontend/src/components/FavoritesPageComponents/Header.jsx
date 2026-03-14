@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import { Search, XCircle } from "lucide-react";
 
 
 function Header({setFilter, setSort, filter, 
@@ -34,7 +35,13 @@ function Header({setFilter, setSort, filter,
 
   return(
     <div className="headFav">
-        <input className="text-sm" type="text" placeholder="Search country name..." value={search} onChange={(e)=> setSearch(e.target.value)}/>
+      <div className="flex items-center relative">
+            <Search className="max-h-[20px] max-w-[20px] absolute ml-2 cursor-pointer" />
+            <input value={search} className="border border-b-gray-500 outline-0 text-[0.8rem] w-full py-1 rounded-[4px] px-3 pl-8 pr-8 bg-black" type="text" placeholder="Search country..."
+                onChange={(e)=> setSearch(()=> e.target.value)} />
+            {search.length > 0 && <XCircle className="max-h-[20px] max-w-[20px] absolute ml-2 right-2 cursor-pointer" 
+            onClick={()=> setSearch(``)}/>}
+      </div>
 
         <div className="selectBox">
           <div>

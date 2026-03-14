@@ -1,6 +1,6 @@
 .headFav {
     display: flex;
-    margin-top: -20px;
+    margin-top: -10px;
     justify-content: space-between;
     align-items: start;
     gap: 20px;
@@ -12,23 +12,15 @@
     padding: 3px 4px;
     padding-top: 4px;
     box-shadow: 0px 10px 900px 2px rgb(0, 0, 0);
-    background-color: rgba(41, 40, 40, 0.664);
+    border-bottom: 1px solid rgb(82, 82, 82);
+    
 }
 
 .headFav > div {
     gap: 4px;
 }
 
-.headFav input {
-    padding: 14px 8px;
-    width: 50%;
-    flex: 1;
-    border-radius: 4px;
-    height: 24px;
-    border: 1px solid rgba(228, 228, 228, 0.863);
-    background-color: rgba(0, 0, 0, 0.555);
-    color: antiquewhite;
-}
+
 
 
 
@@ -48,10 +40,11 @@
 
 .headFav .output {
     border-radius: 2px;
-    border: 1px solid rgb(202, 202, 202);
+    border: 1px solid rgb(145, 145, 145);
     padding: 3px 20px;
     cursor: pointer;
     margin-bottom: 2px;
+    background: #000;
 }
 
 .headFav .output:hover {
@@ -69,6 +62,7 @@
     border: 1px solid rgb(155, 155, 155);
     border-radius: 2px;
     background-color: rgb(0, 0, 0);
+    background: #000;
     backdrop-filter: blur(10px);
     z-index: 999 !important;
 }
@@ -83,7 +77,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(53, 51, 56);
+    background: #000;
     border-radius: 4px;
     border: 1px solid rgb(138, 138, 138);
     padding: 4px 14px;
@@ -95,7 +89,7 @@
 }
 
 .country-list:hover {
-    background-color: rgb(42, 39, 44);
+    background-color: rgb(12, 12, 12);
 }
 
 .country-list img {
@@ -187,9 +181,9 @@
 
 
 .country-information {
-    border-radius: 10px;
+    border-radius: 4px;
     overflow: hidden;
-    border: 2px solid rgb(177, 177, 177);
+    border: 1px solid rgb(177, 177, 177);
     max-width: 480px;
     width: 90%;
     margin-top: 30px;
@@ -199,20 +193,28 @@
     left: 50%;
     transform: translate(-50%, -50%);
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 4, 10, 0.589);
     display: flex;
     flex-direction: column;
+    background-color: rgb(0, 0, 0);
 }
 
 
 .country-information .top {
-    background: linear-gradient(to right bottom, rgba(255, 0, 0, 0.76) 5%, rgba(0, 238, 255, 0.158) 59%);
+    background: linear-gradient(to right bottom, rgba(255, 0, 0, 0.76) 5%, rgba(0, 0, 0, 0.158) 59%);
     padding: 10px 7px;
     background-position: top;
     animation: 4s backAnimation linear infinite; 
     transition: 2s;
     background-size: 10%;
 }
+
+
+
+.country-information .middle {
+    padding: 7px;
+    border-top: 2px dashed rgb(177, 6, 0);
+}
+
 
 @keyframes backAnimation {
     0% {
@@ -226,26 +228,18 @@
 }
 
 
-.country-information .middle {
-    padding: 7px;
-    background-color: rgba(247, 0, 235, 0.055);
-    border-top: 4px solid rgba(252, 3, 3, 0.233);
-    
-}
-
 .country-information .bottom {
     padding: 7px;
-    background-color: rgba(247, 0, 235, 0.055);
 }
 
 
 .country-information .middle p, .country-information .bottom p{
-    color: rgb(255, 255, 255);
+    color: rgb(230, 230, 230);
     font-weight: 400;
 }
 
 .country-information .middle span, .country-information .bottom span{
-    color: rgb(240, 230, 230);
+    color: rgb(216, 216, 216);
     font-weight: normal;
     margin-left: 4px;
     
