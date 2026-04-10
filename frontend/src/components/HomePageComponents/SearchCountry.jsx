@@ -39,7 +39,7 @@ function SearchCountry({setIsSearching, val, setVal}) {
           handleInput(e.target.value)
         }}
       />
-      <MapPin className="map-pin" onClick={handleClick} />
+      <MapPin className="map-pin" xlinkTitle="Detect Location" onClick={handleClick} />
     </div>
     </form>
   );

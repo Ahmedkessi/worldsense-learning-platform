@@ -46,9 +46,11 @@ function CountryVideo() {
 
   if (!showVideo) {
     return (
-      <button className="btn-show" onClick={() => setShowVideo(true)}>
-        Watch videos about {countryName} ▶️
-      </button>
+      <div className="btn-show-box">
+        <button className="btn-show" onClick={() => setShowVideo(true)}>
+           Watch videos about {countryName} ▶️
+         </button>
+      </div>
     );
   }
 
@@ -133,7 +135,7 @@ function CountryVideo() {
 function AllVideos({video, vids, setCurrentIndex, index, currentIndex}) {
 const isTrue = currentIndex === index;
 const width = window.innerWidth;
-const slice = width > 397 ? 80 : 48;
+const slice = width > 397 ? 36 : 24;
 
   function handleClick() {
     setCurrentIndex(()=> vids.findIndex(v => v.videoId === video.videoId))

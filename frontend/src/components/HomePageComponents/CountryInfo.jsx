@@ -29,7 +29,7 @@ function CountryInfo() {
 export default CountryInfo;
 
 function Country({ data, description }) {
-  const currencies = data?.currencies && Object.values(data?.currencies)[0]?.name || null;
+  const currencies = data?.currencies && Object.values(data?.currencies)[0] || null;
   const languagesString = data?.languages && Object.values(data?.languages).join(", ") || null;
 
   return (
@@ -68,7 +68,8 @@ function Country({ data, description }) {
             }
             {currencies &&
                 <p>
-                  <span className="b-title">Currency</span> <span>{currencies}</span>
+            
+                  <span className="b-title">Currency</span> <span>{currencies.symbol} -- {currencies.name}</span>
                 </p>
             }
 

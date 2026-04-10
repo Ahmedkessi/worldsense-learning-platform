@@ -16,18 +16,28 @@ import { useState } from "react";
 
 
 function HomePage() {
-  const {error, isLoading, searchCountries} = useLocation();
+  const {error, isLoading, searchCountries, defaultFirst} = useLocation();
   const [isSearching, setIsSearching] = useState(``)
-  const [val, setVal] = useState(``)
+  const [val, setVal] = useState(``);
+
+  console.log(Boolean(error), isLoading, defaultFirst)
+  console.log(error)
+
 
   return (
     <>
     <AppNavigation />
     <div className="page">
      {/*<h3>Home</h3>*/}
-     
+     <br />
       <SearchCountry val={val} setVal={setVal} setIsSearching={setIsSearching} />
       {isSearching.length > 0 && <SearchedBox setVal={setVal} setIsSearching={setIsSearching} countries={searchCountries} isLoading={isLoading} isSearching={isSearching} />}
+
+      <div className={`map-wrapper ${isLoading} ${error !== ""} `} >
+            <Map />
+        </div>
+
+
 
       {isLoading && !error  ?
         <LoadingPageSpinner msg={`Loading data...`} type={`full`} />
@@ -36,17 +46,20 @@ function HomePage() {
       <>
         
         
-        {error ?
+        {Boolean(error) && defaultFirst || Boolean(error) ?
           <Error type={`full`} msg={error} />
         :
         <>
-          <div className="map-wrapper">
-           <Map />
-          </div>
-          <CountryInfo />
-          <CountryWeather />
-          <CountryImages />
-          <CountryVideo />
+          
+          {
+            !error && !isLoading && !defaultFirst && 
+            <>
+              <CountryInfo />
+              <CountryWeather />
+              <CountryImages />
+              <CountryVideo />
+             </>
+          }
         </>
         }
         {!error && <Form />}

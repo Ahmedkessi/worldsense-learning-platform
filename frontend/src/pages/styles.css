@@ -3,6 +3,11 @@
     padding: 0 10px;
 }
 
+.page .true {
+    max-height: 200px !important;
+    margin-bottom: -120px;
+}
+
 @media screen and (max-width: 554px) {
     .page {
         padding: 0px 8px;

@@ -11,13 +11,14 @@ function LocationProvider({ children }) {
   const [searchCountries, setSearchCountries] = useState([])
   const [isByTap, setIsByTap] = useState(false)
   const [isDetecting, setIsDetecting] = useState();
+  const [defaultFirst, setDefaultFirst] = useState(false)
 
   const [location, setLocation] = useState([]);
   const [located, setlocated] = useState([]);
   const [mapLocation, setMapLocation] = useState([])
   
   const [countryName, setCountryName] = useState(``);
-  const [locationMode, setLocationMode] = useState(`geom`)
+  const [locationMode, setLocationMode] = useState(`def`)
   
   
   const [isLoading, setIsLoading] = useState(false);
@@ -53,22 +54,28 @@ function LocationProvider({ children }) {
     }, 1000 * 70);
   }, [isLoading])*/
   
-
+  
 
   // Getting User Loaction and lat, lng
   useEffect(
     function () {
+      
+      if (locationMode !== `geo`) return;
       setError(``)
       setIsLoading(true)      
+
       locationMode === `geo` && Boolean(!error.length) && setIsDetecting(()=> true);
+
       if (navigator.geolocation) {
+        setDefaultFirst(()=> false)
         navigator.geolocation.getCurrentPosition((position) => {
         setIsDetecting(false)
-        if (locationMode !== `geo`) return;
+        
         setLocation(()=> [position.coords.latitude, position.coords.longitude]);
       }, (error) => {
-          setError("We couldn't find your location. Please check your browser settings or search for your city manually. 🔍");
-           setIsDetecting(false)
+        setError("We couldn't find your location. Please check your browser settings or search for your country mannually. 🔍");
+        setIsDetecting(false)
+        setIsLoading(false)
       });
       } else {
           setError("Geolocation is not supported by this browser.");
@@ -96,6 +103,15 @@ function LocationProvider({ children }) {
     function () {
       async function fetchCountry() {
         try {
+          if(locationMode === 'def') {
+            setDefaultFirst(true)
+          console.log('set')
+            setIsLoading(false)
+            return
+          }; 
+
+          setDefaultFirst(false)
+          
           setIsLoading(true)
           setError(``);
           if(location.length !== 2 && !isLoading) throw new Error("Reverse geocoding failed");;
@@ -111,10 +127,12 @@ function LocationProvider({ children }) {
           }
           setCountryName(() => data?.countryName);
           setError(``)
+          
         
           
           
         } catch (err) {
+          setIsLoading(()=> false)
           setError(err.message);
           setCountryName(``)
           setWeatherError(err.message);
@@ -146,7 +164,9 @@ useEffect(
         }
 
         const data = await res.json();
+        setDefaultFirst(()=> false)
         setSearchCountries(data)
+        console.log(data)
 
         // Find the country object whose name.common matches exactly (case-insensitive)
         const matchedCountry = data.find(
@@ -276,6 +296,7 @@ useEffect(
   return (
     <locationContext.Provider
       value={{
+        defaultFirst,
         located,
         setlocated,
         setMapLocation,
@@ -289,6 +310,7 @@ useEffect(
         setCountryName,
         weatherData,
         setLocationMode,
+        locationMode,
         images,
         setImages,
         logged, 
